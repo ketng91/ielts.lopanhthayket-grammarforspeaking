@@ -60,20 +60,22 @@
 
     <!-- Header / Navbar -->
     <!-- Header / Navbar -->
+<!-- Header / Navbar -->
 <header class="bg-navy-950 text-white sticky top-0 z-40 border-b border-indigo-900/50 shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div class="flex items-center space-x-3">
-            <!-- NÚT BẬT/TẮT SIDEBAR TRÊN MOBILE -->
-            <button onclick="toggleMobileSidebar()" class="lg:hidden bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-lg text-sm transition focus:outline-none">
-                <i class="fa-solid fa-bars"></i>
+            <!-- NÚT BẬT MODAL CHỌN CHUYÊN ĐỀ TRÊN MOBILE -->
+            <button onclick="toggleTopicModal()" class="lg:hidden bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-list-ul"></i>
+                <span>Chọn bài</span>
             </button>
 
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-sky-400 flex items-center justify-center text-white font-bold text-xl shadow-md hidden sm:flex">
                 <i class="fa-solid fa-graduation-cap"></i>
             </div>
             <div>
-                <h1 class="text-base sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
-                    IELTS Speaking <span class="bg-indigo-500/30 text-indigo-300 text-xs px-2 py-0.5 rounded-full border border-indigo-400/30">Pro</span>
+                <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                    IELTS Speaking <span class="bg-indigo-500/30 text-indigo-300 text-xs px-2 py-0.5 rounded-full border border-indigo-400/30 hidden sm:inline">Pro</span>
                 </h1>
                 <p class="text-xs text-slate-400 hidden sm:block">Chuyên đề Ngữ pháp Ứng dụng & Bài mẫu Thực chiến</p>
             </div>
@@ -89,12 +91,41 @@
 
             <button onclick="toggleGlobalTranslation()" id="globalTransBtn" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-900/80 transition flex items-center gap-1.5 shadow-sm">
                 <i class="fa-solid fa-language text-indigo-400"></i>
-                <span class="hidden md:inline">Hiện/Ẩn</span> <span class="hidden sm:inline">Dịch</span> VN
+                <span class="hidden md:inline">Hiện/Ẩn</span> VN
             </button>
         </div>
     </div>
 </header>
 
+<!-- MODAL CHỌN CHUYÊN ĐỀ DẠNG POPUP CHO MOBILE -->
+<div id="topicModal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-xs hidden flex flex-col justify-end lg:hidden transition-opacity">
+    <div class="bg-white w-full max-h-[85vh] rounded-t-2xl shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-300">
+        
+        <!-- Header Modal -->
+        <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+            <div>
+                <h3 class="font-bold text-slate-900 text-sm">Danh sách 40 Chuyên đề</h3>
+                <p class="text-xs text-slate-500">Chọn chuyên đề bạn muốn ôn tập</p>
+            </div>
+            <button onclick="toggleTopicModal()" class="w-8 h-8 rounded-full bg-slate-200/80 text-slate-600 flex items-center justify-center hover:bg-slate-300">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Bộ lọc Part ngay trong Modal -->
+        <div class="p-3 bg-slate-100 border-b border-slate-200 flex gap-1 text-xs font-medium">
+            <button onclick="filterPartModal('all')" id="m-filter-all" class="flex-1 py-1.5 rounded bg-white shadow-xs text-indigo-900 font-bold">Tất cả</button>
+            <button onclick="filterPartModal('part1')" id="m-filter-part1" class="flex-1 py-1.5 rounded text-slate-600">Part 1</button>
+            <button onclick="filterPartModal('part2')" id="m-filter-part2" class="flex-1 py-1.5 rounded text-slate-600">Part 2</button>
+            <button onclick="filterPartModal('part3')" id="m-filter-part3" class="flex-1 py-1.5 rounded text-slate-600">Part 3</button>
+        </div>
+
+        <!-- Danh sách bài học cuộn bên trong Modal -->
+        <div class="overflow-y-auto p-4 space-y-2 flex-1" id="modalTopicNavigation">
+            <!-- Render qua JS -->
+        </div>
+    </div>
+</div>
 
     <!-- Main Container Layout -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -1911,6 +1942,62 @@
                 `;
             }).join('');
         }
+
+
+// Bật/tắt Modal chọn bài trên mobile
+        function toggleTopicModal() {
+            const modal = document.getElementById('topicModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                renderModalTopicNavigation();
+            }
+        }
+
+        // Render danh sách trong Modal mobile
+        function renderModalTopicNavigation() {
+            const nav = document.getElementById('modalTopicNavigation');
+            nav.innerHTML = grammarTopicsData.map(topic => {
+                const isActive = topic.id === currentTopicId;
+                const activeClass = isActive 
+                    ? 'bg-indigo-50 text-indigo-700 border-indigo-500 font-semibold shadow-xs' 
+                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100';
+
+                return `
+                    <button onclick="selectTopicFromModal('${topic.id}')" 
+                        class="w-full text-left px-3.5 py-3 rounded-xl border text-xs sm:text-sm transition flex items-center justify-between ${activeClass}">
+                        <span class="pr-2 leading-relaxed">${topic.title}</span>
+                        <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Chọn topic từ modal mobile thì tự đóng modal
+        function selectTopicFromModal(topicId) {
+            selectTopic(topicId);
+            toggleTopicModal();
+        }
+
+        // Đồng bộ lọc Part trong Modal
+        function filterPartModal(part) {
+            filterPart(part);
+            // Cập nhật giao diện nút bấm trong modal
+            ['all', 'part1', 'part2', 'part3'].forEach(p => {
+                const btn = document.getElementById(`m-filter-${p}`);
+                if (btn) {
+                    if (p === part) {
+                        btn.className = "flex-1 py-1.5 rounded bg-white shadow-xs text-indigo-900 font-bold";
+                    } else {
+                        btn.className = "flex-1 py-1.5 rounded text-slate-600";
+                    }
+                }
+            });
+        }
+
+
+
+
+
     </script>
 </body>
 </html>
