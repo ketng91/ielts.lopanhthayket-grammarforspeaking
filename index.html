@@ -75,7 +75,7 @@
             </div>
             <div>
                 <h1 class="text-sm sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
-                    IELTS Speaking <span class="bg-indigo-500/30 text-indigo-300 text-xs px-2 py-0.5 rounded-full border border-indigo-400/30 hidden sm:inline">Pro</span>
+                    IELTS Speaking - Lớp Anh thầy Kết <span class="bg-indigo-500/30 text-indigo-300 text-xs px-2 py-0.5 rounded-full border border-indigo-400/30 hidden sm:inline">Pro</span>
                 </h1>
                 <p class="text-xs text-slate-400 hidden sm:block">Chuyên đề Ngữ pháp Ứng dụng & Bài mẫu Thực chiến</p>
             </div>
@@ -1751,7 +1751,7 @@
             }
 
             container.innerHTML = filteredSamples.map(sample => {
-                const formattedAnswerEn = sample.answerEn.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-indigo-700 decoration-indigo-300 underline underline-offset-2">$1</strong>');
+                const formattedAnswerEn = sample.answerEn.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-amber-700 decoration-indigo-300 underline underline-offset-2">$1</strong>');
                 const formattedBreakdown = sample.breakdown.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
                 return `
