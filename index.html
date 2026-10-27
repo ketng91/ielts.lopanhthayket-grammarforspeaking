@@ -59,35 +59,42 @@
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
     <!-- Header / Navbar -->
-    <header class="bg-navy-950 text-white sticky top-0 z-40 border-b border-indigo-900/50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-sky-400 flex items-center justify-center text-white font-bold text-xl shadow-md">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-                <div>
-                    <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
-                        IELTS Speaking - Lớp Anh thầy Kết <span class="bg-indigo-500/30 text-indigo-300 text-xs px-2.5 py-0.5 rounded-full border border-indigo-400/30">Grammar Pro</span>
-                    </h1>
-                    <p class="text-xs text-slate-400 hidden sm:block">Chuyên đề Ngữ pháp và cụm từ Ứng dụng & Bài mẫu Thực chiến</p>
-                </div>
+    <!-- Header / Navbar -->
+<header class="bg-navy-950 text-white sticky top-0 z-40 border-b border-indigo-900/50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <!-- NÚT BẬT/TẮT SIDEBAR TRÊN MOBILE -->
+            <button onclick="toggleMobileSidebar()" class="lg:hidden bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-lg text-sm transition focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-sky-400 flex items-center justify-center text-white font-bold text-xl shadow-md hidden sm:flex">
+                <i class="fa-solid fa-graduation-cap"></i>
             </div>
-
-            <!-- Global Actions & Search Input -->
-            <div class="flex items-center space-x-3">
-                <div class="relative w-44 sm:w-64">
-                    <input type="text" id="searchInput" onkeyup="handleSearch()" placeholder="Tìm kiếm công thức, chủ đề..." 
-                        class="w-full bg-slate-900 text-slate-200 text-xs sm:text-sm pl-9 pr-3 py-1.5 rounded-lg border border-indigo-900/80 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-slate-400">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
-                </div>
-
-                <button onclick="toggleGlobalTranslation()" id="globalTransBtn" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-900/80 transition flex items-center gap-1.5 shadow-sm">
-                    <i class="fa-solid fa-language text-indigo-400"></i>
-                    <span class="hidden md:inline">Hiện/Ẩn</span> Dịch Tiếng Việt
-                </button>
+            <div>
+                <h1 class="text-base sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                    IELTS Speaking <span class="bg-indigo-500/30 text-indigo-300 text-xs px-2 py-0.5 rounded-full border border-indigo-400/30">Pro</span>
+                </h1>
+                <p class="text-xs text-slate-400 hidden sm:block">Chuyên đề Ngữ pháp Ứng dụng & Bài mẫu Thực chiến</p>
             </div>
         </div>
-    </header>
+
+        <!-- Global Actions & Search Input -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+            <div class="relative w-36 sm:w-64">
+                <input type="text" id="searchInput" onkeyup="handleSearch()" placeholder="Tìm kiếm..." 
+                    class="w-full bg-slate-900 text-slate-200 text-xs sm:text-sm pl-8 sm:pl-9 pr-3 py-1.5 rounded-lg border border-indigo-900/80 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-slate-400">
+                <i class="fa-solid fa-magnifying-glass absolute left-2.5 sm:left-3 top-2.5 text-slate-400 text-xs"></i>
+            </div>
+
+            <button onclick="toggleGlobalTranslation()" id="globalTransBtn" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-900/80 transition flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-language text-indigo-400"></i>
+                <span class="hidden md:inline">Hiện/Ẩn</span> <span class="hidden sm:inline">Dịch</span> VN
+            </button>
+        </div>
+    </div>
+</header>
+
 
     <!-- Main Container Layout -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -1596,6 +1603,31 @@
         let currentTopicId = "topic-1";
         let currentPartFilter = "all";
         let showVietnamese = true;
+
+
+// Toggle Sidebar on Mobile
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('mobileSidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        // Tự động đóng sidebar trên điện thoại sau khi bấm chọn một topic
+        const originalSelectTopic = selectTopic;
+        selectTopic = function(topicId) {
+            originalSelectTopic(topicId);
+            if (window.innerWidth < 1024) {
+                toggleMobileSidebar();
+            }
+        };
+
 
         // Initialize App
         window.onload = function() {
