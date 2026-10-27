@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar for IELTS Speaking - Lớp Anh thầy Kết</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        },
+                        navy: {
+                            800: '#1e1b4b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-navy-950 text-white sticky top-0 z-40 border-b border-indigo-900/50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-sky-400 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                        IELTS Speaking - Lớp Anh thầy Kết <span class="bg-indigo-500/30 text-indigo-300 text-xs px-2.5 py-0.5 rounded-full border border-indigo-400/30">Grammar Pro</span>
+                    </h1>
+                    <p class="text-xs text-slate-400 hidden sm:block">Chuyên đề Ngữ pháp và cụm từ Ứng dụng & Bài mẫu Thực chiến</p>
+                </div>
+            </div>
+
+            <!-- Global Actions & Search Input -->
+            <div class="flex items-center space-x-3">
+                <div class="relative w-44 sm:w-64">
+                    <input type="text" id="searchInput" onkeyup="handleSearch()" placeholder="Tìm kiếm công thức, chủ đề..." 
+                        class="w-full bg-slate-900 text-slate-200 text-xs sm:text-sm pl-9 pr-3 py-1.5 rounded-lg border border-indigo-900/80 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-slate-400">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                </div>
+
+                <button onclick="toggleGlobalTranslation()" id="globalTransBtn" class="bg-slate-900 hover:bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg text-xs font-medium border border-indigo-900/80 transition flex items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-language text-indigo-400"></i>
+                    <span class="hidden md:inline">Hiện/Ẩn</span> Dịch Tiếng Việt
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container Layout -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Sidebar / Navigation Panel (Topic Selection) -->
+        <!-- Sidebar / Navigation Panel (Topic Selection & Part Filter) -->
+<aside class="lg:col-span-4 xl:col-span-3 space-y-4">
+    <!-- KHỐI 1: Bộ Lọc theo Part CỐ ĐỊNH NẰM TRÊN CÙNG -->
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200/80 p-4 sticky top-20 z-10">
+        <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+            <i class="fa-solid fa-filter text-indigo-500"></i> Lọc theo Part
+        </h2>
+        <div class="grid grid-cols-4 gap-1.5 bg-slate-100 p-1 rounded-lg text-xs font-medium text-slate-600">
+            <button onclick="filterPart('all')" id="filter-all" class="part-filter-btn py-1.5 rounded text-center bg-white shadow-xs text-indigo-900 font-semibold">Tất cả</button>
+            <button onclick="filterPart('part1')" id="filter-part1" class="part-filter-btn py-1.5 rounded text-center hover:text-slate-900 transition">Part 1</button>
+            <button onclick="filterPart('part2')" id="filter-part2" class="part-filter-btn py-1.5 rounded text-center hover:text-slate-900 transition">Part 2</button>
+            <button onclick="filterPart('part3')" id="filter-part3" class="part-filter-btn py-1.5 rounded text-center hover:text-slate-900 transition">Part 3</button>
+        </div>
+    </div>
+
+    <!-- KHỐI 2: Danh sách Chuyên đề Ngữ pháp CÓ THANH CUỘN RIÊNG -->
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200/80 p-4">
+        <div class="flex items-center justify-between mb-3">
+            <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Danh sách Chuyên đề</h2>
+            <span class="text-[11px] bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full font-bold">40 bài</span>
+        </div>
+        <!-- max-h-[calc(100vh-16rem)] giúp danh sách tự động cuộn bên trong khi vượt quá chiều cao màn hình -->
+        <nav class="space-y-1.5 max-h-[calc(100vh-16rem)] overflow-y-auto pr-1" id="topicNavigation">
+            <!-- Dynamic Topics via JS -->
+        </nav>
+    </div>
+
+    <!-- KHỐI 3: Tip Box -->
+    <div class="bg-gradient-to-br from-navy-950 to-indigo-950 rounded-xl p-4 text-white shadow-sm border border-indigo-900/60 hidden xl:block">
+        <div class="flex items-center gap-2 mb-2 text-amber-400 font-semibold text-sm">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span>Tự nhiên & Đúng ngữ cảnh</span>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed">
+            Giám khảo chấm tiêu chí <strong>Grammatical Range & Accuracy</strong> dựa trên sự tự nhiên và linh hoạt. Đừng cố ép mọi Part phải dùng đủ cấu trúc; hãy chọn đúng công thức cho đúng ngữ cảnh!
+        </p>
+    </div>
+</aside>
+
+        <!-- Main Content Area -->
+        <main class="lg:col-span-8 xl:col-span-9 space-y-6">
+            <!-- Topic Overview & Formula Header -->
+            <section id="topicHeaderCard" class="bg-white rounded-xl border border-slate-200/80 p-5 sm:p-6 shadow-sm">
+                <!-- Content injected dynamically -->
+            </section>
+
+            <!-- Speaking Samples Container -->
+            <div class="space-y-6" id="samplesContainer">
+                <!-- Samples injected dynamically -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs sm:text-sm px-4 py-2.5 rounded-lg shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2 z-50 border border-slate-800">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMessage">Đã sao chép vào khay nhớ tạm!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200/80 mt-12 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© IELTS Speaking - Lớp Anh thầy Kết.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data and Logic -->
+    <script>
+        // Database of Expanded Grammar Topics (1 to 18) with Unified ID Format
+        const grammarTopicsData = [
+            {
+                id: "topic-1",
+                title: "1. Conditionals & Wish (Giả định & Câu ước)",
+                shortDesc: "Sử dụng câu điều kiện loại 2, hỗn hợp và câu ước để bộc lộ quan điểm giả định, mở rộng ý kiến hoặc đề xuất giải pháp.",
+                formula: [
+                    {
+                        name: "Unreal Conditional (Type 2 - Part 1)",
+                        structure: "If + S + V-ed / Were, S + would / could + V-bare",
+                        usage: "Nói về sở thích/tình huống trái với thực tế ở hiện tại."
+                    },
+                    {
+                        name: "Wish / If only (Part 2)",
+                        structure: "S + wish + S + could / had + V3/ed",
+                        usage: "Bộc lộ mong muốn thay đổi thực tế hoặc kỹ năng/trải nghiệm chưa có."
+                    },
+                    {
+                        name: "Mixed Conditional (Part 3)",
+                        structure: "If + S + had + V3/ed, S + would + V-bare (now)",
+                        usage: "Giả định hành động trong quá khứ ảnh hưởng trực tiếp đến kết quả ở hiện tại."
+                    }
+                ],
+                proTips: "Dùng 'If I were given the opportunity...' hoặc 'If I had the luxury of time...' để trả lời các câu hỏi giả định ở Part 1 & Part 2 một cách tự nhiên.",
+                samples: [
+                    {
+                        id: "t1-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Travel & Hobbies",
+                        question: "Do you prefer traveling alone or with a group?",
+                        answerEn: "To be completely honest, I usually travel with my family. However, **if I had the chance**, I **would definitely choose** to go on a solo backpacking trip. **If I traveled alone**, I **could freely explore** hidden gems without having to compromise on the itinerary.",
+                        answerVi: "Thành thật mà nói, tôi thường đi du lịch với gia đình. Tuy nhiên, nếu có cơ hội, tôi chắc chắn sẽ chọn đi du lịch bụi một mình. Nếu tôi đi một mình, tôi có thể tự do khám phá những điểm đến ít người biết mà không phải thỏa hiệp về lịch trình.",
+                        breakdown: "Sử dụng **Conditional Type 2** (**If I had..., I would choose...** và **If I traveled..., I could explore...**) để diễn đạt sở thích trong một tình huống giả định chưa xảy ra ở hiện tại."
+                    },
+                    {
+                        id: "t1-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a Skill",
+                        question: "Describe a skill you wish you could learn in the future.",
+                        answerEn: "I'd like to talk about learning how to code in Python. **I really wish I had learned** computer programming back when I was at university. **If I had acquired** basic coding skills back then, I **would be able to automate** many of my current routine work tasks today.",
+                        answerVi: "Tôi muốn kể về việc học lập trình Python. Tôi thực sự ước mình đã học lập trình máy tính từ thời còn học đại học. Nếu hồi đó tôi tiếp thu được kỹ năng lập trình cơ bản, thì hôm nay tôi đã có thể tự động hóa nhiều công việc hàng ngày hiện tại của mình.",
+                        breakdown: "・ **I wish I had learned...**: Cấu trúc **Wish + Past Perfect** diễn tả sự nuối tiếc về quá khứ.\n・ **If I had acquired..., I would be able to...**: **Mixed Conditional** giả định quá khứ làm thay đổi khả năng ở hiện tại."
+                    },
+                    {
+                        id: "t1-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Technology & Society",
+                        question: "How has technology affected modern employment?",
+                        answerEn: "Technology has undeniably revolutionized the job market. **If internet connectivity had not advanced** so dramatically over the past decade, remote working models **would not be** as widespread as they are today. Consequently, **if companies were to invest** more in AI training, workers **would adapt** faster to these changes.",
+                        answerVi: "Công nghệ rõ ràng đã cách mạng hóa thị trường lao động. Nếu kết nối internet không phát triển mạnh mẽ như vậy trong thập kỷ qua, các mô hình làm việc từ xa sẽ không phổ biến như ngày nay. Do đó, nếu các công ty đầu tư nhiều hơn vào đào tạo AI, người lao động sẽ thích nghi nhanh hơn với những thay đổi này.",
+                        breakdown: "・ **If internet had not advanced..., would not be...**: **Mixed Conditional** nối quá khứ đến thực trạng hiện tại.\n・ **If companies were to invest..., workers would adapt...**: Cấu trúc giả định trang trọng với **If + S + were to + V-bare**."
+                    }
+                ]
+            },
+            {
+                id: "topic-2",
+                title: "2. Complex Sentences & Relative Clauses (Mệnh đề quan hệ & Câu phức)",
+                shortDesc: "Kết hợp mệnh đề quan hệ không xác định, mệnh đề rút gọn và mệnh đề danh ngữ (Nominal clauses) để giải thích chi tiết mượt mà.",
+                formula: [
+                    {
+                        name: "Nominal Clauses (Wh- / That as Subject - Part 1/3)",
+                        structure: "What + S + V + is/was that... / How S + V + affects...",
+                        usage: "Biến toàn bộ một ý nghĩ/hành động thành chủ ngữ để tăng độ linh hoạt ngữ pháp."
+                    },
+                    {
+                        name: "Non-defining Relative Clause (Part 2)",
+                        structure: "Noun, who/which/where..., V...",
+                        usage: "Thêm thông tin mô tả phong phú cho con người, địa điểm hoặc trải nghiệm."
+                    },
+                    {
+                        name: "Reduced Relative Clause (Part 3)",
+                        structure: "Noun + V-ing (active) / Noun + V3/ed (passive)",
+                        usage: "Rút gọn mệnh đề quan hệ giúp câu ngắn gọn, súc tích và học thuật."
+                    }
+                ],
+                proTips: "Thay vì nói 'I like X because...', hãy bắt đầu bằng 'What I love most about X is that...' để sở hữu ngay một câu phức hoàn chỉnh.",
+                samples: [
+                    {
+                        id: "t2-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Daily Routine",
+                        question: "What is your favorite time of the day?",
+                        answerEn: "**What I enjoy most about the day is** early morning around 6 AM. **How the city feels** so quiet before the rush hour begins gives me a sense of peace, **which helps me organize** my thoughts for the rest of the day.",
+                        answerVi: "Điều tôi thích nhất trong ngày là buổi sáng sớm khoảng 6 giờ sáng. Cảm giác thành phố yên bình như thế nào trước khi giờ cao điểm bắt đầu mang lại cho tôi cảm giác bình yên, điều này giúp tôi sắp xếp lại suy nghĩ cho phần còn lại của ngày.",
+                        breakdown: "・ **What I enjoy most... is...**: **Nominal Clause** làm chủ ngữ.\n・ **How the city feels... gives me...**: **Wh-clause** đóng vai trò chủ ngữ.\n・ **..., which helps me...**: Mệnh đề quan hệ không xác định bổ nghĩa cho toàn bộ vế trước."
+                    },
+                    {
+                        id: "t2-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a Person",
+                        question: "Describe a person who inspires you.",
+                        answerEn: "I'd like to tell you about my high school mentor, **who is an exceptionally patient educator**. She runs a non-profit center **located in my hometown**, **which aims to support** underprivileged children. Her dedication is **what drives me** to pursue community service.",
+                        answerVi: "Tôi muốn kể cho bạn nghe về người cô giáo cố vấn cấp ba của tôi, người là một nhà giáo vô cùng kiên nhẫn. Cô điều hành một trung tâm phi lợi nhuận nằm ở quê tôi, trung tâm này nhằm mục đích hỗ trợ trẻ em có hoàn cảnh khó khăn. Sự tận tụy của cô chính là điều thúc đẩy tôi theo đuổi công việc phục vụ cộng đồng.",
+                        breakdown: "・ **..., who is an exceptionally patient...**: **Non-defining Relative Clause**.\n・ **...center located in my hometown...**: **Reduced Relative Clause** dạng bị động (which is located -> located).\n・ **...what drives me...**: **Nominal Clause** bổ ngữ cho động từ IS."
+                    },
+                    {
+                        id: "t2-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Education & Society",
+                        question: "What qualities should a good teacher possess?",
+                        answerEn: "Teachers **working in modern classrooms** need to adapt quickly. **What matters most in contemporary education is** not just delivering information, but developing critical thinking skills. Students **encouraged to ask questions** tend to retain knowledge far better.",
+                        answerVi: "Giáo viên làm việc trong các lớp học hiện đại cần phải thích ứng nhanh chóng. Điều quan trọng nhất trong giáo dục hiện đại không chỉ là truyền đạt thông tin, mà là phát triển kỹ năng tư duy phản biện. Những học sinh được khuyến khích đặt câu hỏi có xu hướng ghi nhớ kiến thức tốt hơn nhiều.",
+                        breakdown: "・ **Teachers working...**: **Reduced Relative Clause** thể chủ động (who work -> working).\n・ **What matters most... is...**: **Wh-nominal clause** làm chủ ngữ.\n・ **Students encouraged to...**: **Reduced Relative Clause** thể bị động."
+                    }
+                ]
+            },
+            {
+                id: "topic-3",
+                title: "3. Past Habits & Regrets (Thói quen & Sự kiện trong Quá khứ)",
+                shortDesc: "Phân biệt Used to, Would và Past Perfect Continuous để tái hiện rõ nét bức tranh trải nghiệm trong Part 1 & Part 2.",
+                formula: [
+                    {
+                        name: "Used to vs. Would (Part 1)",
+                        structure: "Used to + V (states & actions) / Would + V (repetitive actions)",
+                        usage: "Nói về thói quen cũ đã chấm dứt hoặc sự khác biệt giữa quá khứ và hiện tại."
+                    },
+                    {
+                        name: "Past Perfect Continuous (Part 2)",
+                        structure: "S + had been + V-ing... when / before + S + V2/ed",
+                        usage: "Nhấn mạnh quá trình kéo dài của một hành động trước khi có một cột mốc khác diễn ra trong quá khứ."
+                    }
+                ],
+                proTips: "Trong Part 2, hãy dùng Past Perfect Continuous để làm 'nền' cho sự kiện chính (ví dụ: 'I had been searching for hours before I found it').",
+                samples: [
+                    {
+                        id: "t3-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Childhood & Sports",
+                        question: "Did you play outdoor games when you were a child?",
+                        answerEn: "Yes, I did. I **used to live** in a small neighborhood where kids **would gather** every evening. We **would play** hide-and-seek or ride bikes until dark. Sadly, children today **are no longer used to playing** outdoors like we did.",
+                        answerVi: "Có chứ. Tôi từng sống ở một khu phố nhỏ, nơi trẻ con thường tập trung vào mỗi buổi tối. Chúng tôi thường chơi trốn tìm hoặc đạp xe cho đến khi trời tối. Đáng buồn là trẻ em ngày nay không còn quen với việc chơi đùa ngoài trời như chúng tôi ngày trước nữa.",
+                        breakdown: "・ **used to live**: Trạng thái sống trong quá khứ (không dùng 'would live').\n・ **would gather / would play**: Hành động thói quen lặp đi lặp lại trong quá khứ.\n・ **are no longer used to playing**: Cấu trúc quen với việc gì ở hiện tại (Be used to V-ing)."
+                    },
+                    {
+                        id: "t3-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe an Achievement or Waiting Event",
+                        question: "Describe an event or goal you spent a lot of time preparing for.",
+                        answerEn: "I'd like to share my experience of passing a difficult university exam. I **had been studying continuously for almost six months** before the test day arrived. By the time I sat in the exam room, I **had reviewed** all modules twice. When I received the results, I realized that my hard work **had finally paid off**.",
+                        answerVi: "Tôi muốn chia sẻ trải nghiệm đỗ một kỳ thi đại học khó khăn. Tôi đã học liên tục trong gần sáu tháng trước khi ngày thi đến. Vào thời điểm ngồi trong phòng thi, tôi đã ôn tập lại tất cả các học phần hai lần. Khi nhận được kết quả, tôi nhận ra rằng sự nỗ lực của mình cuối cùng đã được đền đáp.",
+                        breakdown: "・ **had been studying continuously...**: **Past Perfect Continuous** nhấn mạnh độ dài hành động kéo dài liên tục trước mốc thời gian thi.\n・ **had reviewed... had paid off**: **Past Perfect** thể hiện chuỗi các sự việc hoàn thành trước sự việc khác trong quá khứ."
+                    }
+                ]
+            },
+            {
+                id: "topic-4",
+                title: "4. Concession & Contrast (Nhượng bộ & Tương phản)",
+                shortDesc: "Sử dụng các cấu trúc nối nâng cao để thể hiện cái nhìn 2 chiều, phản biện linh hoạt ở Part 1 & Part 3.",
+                formula: [
+                    {
+                        name: "Although / Despite (Part 1)",
+                        structure: "Although + Clause, Clause / Despite + Noun/V-ing, Clause",
+                        usage: "Cân bằng ý kiến cá nhân trong câu trả lời ngắn."
+                    },
+                    {
+                        name: "While / Whereas (Part 3)",
+                        structure: "Clause A, while / whereas Clause B",
+                        usage: "So sánh sự đối lập trực tiếp giữa hai nhóm tượng, xu hướng hoặc thế hệ."
+                    },
+                    {
+                        name: "Having said that / On the flip side (Part 3)",
+                        structure: "Point A. Having said that, Point B.",
+                        usage: "Lật lại vấn đề, chuyển ý phản biện tự nhiên như người bản xứ."
+                    }
+                ],
+                proTips: "Trong Part 3, thay vì nói 'On the other hand', hãy thử dùng 'Having said that...' hoặc 'On the flip side...' để liên kết câu hấp dẫn hơn.",
+                samples: [
+                    {
+                        id: "t4-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Work & Lifestyle",
+                        question: "Do you prefer working early in the morning or late at night?",
+                        answerEn: "**Despite being** a morning person generally, I sometimes work late at night when deadlines approach. **Although I feel more energetic** at dawn, night hours offer fewer distractions, allowing me to concentrate better.",
+                        answerVi: "Dù nói chung là một người thích buổi sáng, đôi khi tôi vẫn làm việc muộn vào đêm khi sắp đến hạn chót. Mặc dù tôi cảm thấy tràn đầy năng lượng hơn vào bình minh, nhưng các giờ đêm ít bị xao nhãng hơn, giúp tôi tập trung tốt hơn.",
+                        breakdown: "・ **Despite being...**: Cụm từ nhượng bộ với V-ing.\n・ **Although I feel...**: Mệnh đề nhượng bộ tạo lập quan điểm 2 chiều trong cùng câu."
+                    },
+                    {
+                        id: "t4-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Generation Gap & Culture",
+                        question: "How do younger and older generations view work differently?",
+                        answerEn: "Older workers often prioritize job security and stability, **whereas younger employees tend to seek** flexibility and career fulfillment. **Having said that**, both generations share a common desire for fair remuneration and respectful work environments.",
+                        answerVi: "Những người lao động lớn tuổi thường ưu tiên sự an toàn và ổn định công việc, trong khi nhân viên trẻ hơn có xu hướng tìm kiếm sự linh hoạt và sự hài lòng trong công nghiệp. Dù nói như vậy, cả hai thế hệ đều có chung mong muốn về thù lao công bằng và môi trường làm việc tôn trọng lẫn nhau.",
+                        breakdown: "・ **..., whereas younger employees tend to...**: Từ nối so sánh tương phản trực tiếp giữa 2 đối tượng.\n・ **Having said that,...**: Từ nối chuyển ý nâng cao (Discourse marker) để phản biện cân bằng."
+                    }
+                ]
+            },
+            {
+                id: "topic-5",
+                title: "5. Inversion & Emphatic Structures (Đảo ngữ & Câu nhấn mạnh)",
+                shortDesc: "Tạo điểm nhấn mạnh mẽ trong câu nói bằng câu chẻ (Cleft sentences) hoặc đảo ngữ phủ định ở Part 1, Part 2 & Part 3.",
+                formula: [
+                    {
+                        name: "Cleft Sentences (It is/was... that...) (Part 1 & 2)",
+                        structure: "It is/was + [Subject/Object/Adverb] + that + V/Clause",
+                        usage: "Điểm huyệt lý do, người hoặc sự việc đặc biệt làm bạn ấn tượng."
+                    },
+                    {
+                        name: "Negative Adverb Inversion (Part 3)",
+                        structure: "Not only + Auxiliary + S + V..., but also... / Seldom + Auxiliary + S + V...",
+                        usage: "Nhấn mạnh tầm quan trọng, tính cấp bách hoặc tần suất hiếm hoi của một hiện tượng xã hội."
+                    }
+                ],
+                proTips: "Sử dụng câu chẻ 'It was [Name/Event] that really changed my mind' trong Part 2 để câu chuyện có điểm nhấn rõ ràng.",
+                samples: [
+                    {
+                        id: "t5-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Leisure & Interests",
+                        question: "Why do you like visiting museums?",
+                        answerEn: "To be honest, I'm not a huge history buff. However, **it is the interactive art exhibits that** truly fascinate me. **Only when I visit** modern art centers **do I feel** genuinely inspired.",
+                        answerVi: "Thành thật mà nói, tôi không phải là một người quá mê lịch sử. Tuy nhiên, chính các triển lãm nghệ thuật tương tác mới thực sự lôi cuốn tôi. Chỉ khi đến thăm các trung tâm nghệ thuật hiện đại, tôi mới cảm thấy thực sự có cảm hứng.",
+                        breakdown: "・ **It is the interactive art exhibits that...**: **Cleft Sentence** nhấn mạnh yếu tố tạo sự hấp dẫn.\n・ **Only when I visit..., do I feel...**: Đảo ngữ với **Only when** mượn trợ động từ 'do'."
+                    },
+                    {
+                        id: "t5-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a Memorable Trip",
+                        question: "Describe a memorable journey you went on.",
+                        answerEn: "I'd like to recall my trip to Da Lat last year. **It was during this journey that** I experienced true relaxation. **Seldom have I witnessed** a scenery as breathtaking as the pine forests covered in morning fog.",
+                        answerVi: "Tôi muốn nhắc lại chuyến đi Đà Lạt năm ngoái. Chính trong chuyến đi này, tôi đã trải nghiệm sự thư giãn thực sự. Hiếm khi tôi chứng kiến một khung cảnh đẹp đến ngỡ ngàng như những rừng thông phủ trong sương mù buổi sáng.",
+                        breakdown: "・ **It was during this journey that...**: **Cleft Sentence** nhấn mạnh thời điểm bối cảnh.\n・ **Seldom have I witnessed...**: **Negative Inversion** với phó từ phủ định 'Seldom' ở thì Hiện tại hoàn thành."
+                    },
+                    {
+                        id: "t5-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Media & Public Influence",
+                        question: "Should news media focus more on positive stories?",
+                        answerEn: "Absolutely. **Not only does constant negative news increase** public anxiety, **but it also distorts** people's worldview. **Hardly ever do news outlets report** on small community triumphs, which is regrettable.",
+                        answerVi: "Chắc chắn rồi. Tin tức tiêu cực liên tục không chỉ làm tăng sự lo âu của công chúng, mà nó còn làm méo mó thế giới quan của mọi người. Hầu như không mấy khi các cơ quan tin tức đưa tin về những chiến thắng nhỏ của cộng đồng, điều đó thật đáng tiếc.",
+                        breakdown: "・ **Not only does constant news increase..., but it also distorts...**: Đảo ngữ với **Not only** mượn trợ động từ 'does'.\n・ **Hardly ever do news outlets report...**: Đảo ngữ với **Hardly ever**."
+                    }
+                ]
+            },
+            {
+                id: "topic-6",
+                title: "6. Passive & Impersonal Structures (Thái bị động & Cấu trúc khách quan)",
+                shortDesc: "Xây dựng lập luận học thuật, trung lập trong Part 3 bằng bị động khách quan và cấu trúc Causative Passive trong Part 1/2.",
+                formula: [
+                    {
+                        name: "Causative Passive (Part 1 & 2)",
+                        structure: "Have / Get something done (by someone)",
+                        usage: "Nói về dịch vụ hoặc việc nhờ/thuê người khác thực hiện."
+                    },
+                    {
+                        name: "Impersonal Passive (Part 3)",
+                        structure: "It is widely believed / argued / acknowledged that + Clause",
+                        usage: "Nêu quan điểm dư luận một cách trang trọng, giảm bớt việc dùng 'I think'."
+                    }
+                ],
+                proTips: "Khi thảo luận các vấn đề vĩ mô Part 3 (AI, giáo dục, môi trường), hãy mở đầu bằng 'It is generally acknowledged that...' để khẳng định giọng văn xịn xò.",
+                samples: [
+                    {
+                        id: "t1-p1-s6",
+                        part: "part1",
+                        partTitle: "Part 1: Services & Accommodation",
+                        question: "How often do you maintain or decorate your home?",
+                        answerEn: "I'm not very handy with tools, so I usually **have my house painted** by professionals every few years. Just last month, I **got my air conditioner serviced** before summer started.",
+                        answerVi: "Tôi không khéo tay lắm với các công cụ, vì vậy tôi thường thuê thợ chuyên nghiệp sơn lại nhà vài năm một lần. Vừa tháng trước, tôi đã gọi thợ bảo dưỡng máy điều hòa trước khi mùa hè bắt đầu.",
+                        breakdown: "・ **have my house painted**: Cấu trúc **Causative Passive** (Have + Sth + V3).\n・ **got my air conditioner serviced**: Cấu trúc **Causative Passive** (Get + Sth + V3)."
+                    },
+                    {
+                        id: "t6-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Artificial Intelligence & Future",
+                        question: "Will Artificial Intelligence replace human jobs entirely?",
+                        answerEn: "**It is widely believed that** automation will inevitably eliminate routine manual roles. However, **it is argued by experts that** creative and emotionally intelligent positions **cannot easily be replicated** by algorithms.",
+                        answerVi: "Người ta tin rằng tự động hóa sẽ tất yếu loại bỏ các vai trò thủ công lặp đi lặp lại. Tuy nhiên, các chuyên gia tranh luận rằng các vị trí sáng tạo và trí tuệ cảm xúc không thể dễ dàng bị sao chép bởi các thuật toán.",
+                        breakdown: "・ **It is widely believed that...**: **Impersonal Passive** nêu ý kiến số đông.\n・ **...it is argued by experts that...**: Thể bị động trang trọng.\n・ **...cannot easily be replicated...**: Bị động với Động từ khuyết thiếu (Modal verb passive)."
+                    }
+                ]
+            },
+            {
+                id: "topic-7",
+                title: "7. Speculation & Future in Past (Dự đoán & Dự định trong quá khứ)",
+                shortDesc: "Diễn tả những kế hoạch quá khứ không thành (Part 2) hoặc đưa ra phán đoán, suy luận có căn cứ (Part 3).",
+                formula: [
+                    {
+                        name: "Future in the Past (Part 2)",
+                        structure: "was/were supposed to + V / was/were planning to + V (but...)",
+                        usage: "Nói về dự định ban đầu nhưng sau đó bị thay đổi do hoàn cảnh."
+                    },
+                    {
+                        name: "Past Speculation (Modals of Deduction - Part 3/2)",
+                        structure: "must have + V3 / could have + V3 / might have + V3",
+                        usage: "Đưa ra suy đoán có căn cứ về một sự việc xảy ra trong quá khứ."
+                    }
+                ],
+                proTips: "Sử dụng 'I was supposed to..., but...' là cách tuyệt vời để kéo dài câu trả lời Part 2 khi kể về sự thay đổi kế hoạch.",
+                samples: [
+                    {
+                        id: "t7-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a Changed Plan",
+                        question: "Describe a time when your plans were disrupted.",
+                        answerEn: "I **was supposed to fly** to Japan last autumn for a vacation. However, due to severe flight cancellations, I **had to alter** my schedule. Looking back, the flight disruption **must have been caused** by the unexpected typhoon near Tokyo.",
+                        answerVi: "Tôi vốn dĩ dự định bay sang Nhật Bản vào mùa thu năm ngoái để nghỉ dưỡng. Tuy nhiên, do các chuyến bay bị hủy nghiêm trọng, tôi đã phải thay đổi lịch trình. Nhìn lại, việc hủy chuyến bay chắc hẳn là do cơn bão bất ngờ gần Tokyo gây ra.",
+                        breakdown: "・ **was supposed to fly...**: Dự định trong quá khứ không thành hiện thực.\n・ **must have been caused...**: **Past Speculation** suy đoán quá khứ mang độ chắc chắn cao."
+                    },
+                    {
+                        id: "t7-p3",
+                        part: "part3",
+                        partTitle: "Part 3: History & Archeology",
+                        question: "Why do people study ancient civilizations?",
+                        answerEn: "Understanding history helps us avoid past mistakes. For instance, the collapse of certain ancient cities **might have been triggered** by climate shifts or resource depletion, which offers vital lessons for today.",
+                        answerVi: "Hiểu biết lịch sử giúp chúng ta tránh lặp lại những sai lầm trong quá khứ. Ví dụ, sự sụp đổ của một số thành phố cổ đại có thể đã bị kích hoạt bởi sự thay đổi khí hậu hoặc sự cạn kiệt tài nguyên, điều này mang lại những bài học quan trọng cho ngày nay.",
+                        breakdown: "・ **might have been triggered...**: **Modal of deduction in passive** suy đoán khả năng trong quá khứ về mặt lịch sử."
+                    }
+                ]
+            },
+            {
+                id: "topic-8",
+                title: "8. Cause & Effect Structures (Cấu trúc Nguyên nhân & Kết quả)",
+                shortDesc: "Sử dụng từ nối nguyên nhân - kết quả học thuật để giải thích các vấn đề xã hội phức tạp ở Part 3.",
+                formula: [
+                    {
+                        name: "Advanced Cause Clauses (Part 3)",
+                        structure: "Given that + Clause... / Stemming from + Noun...",
+                        usage: "Nêu lý do mang tính căn cứ rõ ràng."
+                    },
+                    {
+                        name: "Effect & Result Structures (Part 3)",
+                        structure: "Clause A, thereby + V-ing / Clause A, which in turn leads to...",
+                        usage: "Nêu chuỗi hệ quả liên hoàn mượt mà."
+                    }
+                ],
+                proTips: "Thay vì 'So...', hãy dùng '..., thereby allowing...' hoặc '..., which in turn leads to...' để kết nối câu.",
+                samples: [
+                    {
+                        id: "t8-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Urbanization & Environment",
+                        question: "What causes environmental degradation in big cities?",
+                        answerEn: "**Given that urban populations are expanding** rapidly, municipal waste management is overwhelmed. Pollution mostly **stems from** the overuse of private automobiles, **thereby worsening** air quality and harming public health.",
+                        answerVi: "Căn cứ vào việc dân số đô thị đang mở rộng nhanh chóng, việc quản lý rác thải thành phố đang bị quá tải. Ô nhiễm phần lớn bắt nguồn từ việc sử dụng quá mức ô tô cá nhân, từ đó làm tồi tệ thêm chất lượng không khí và gây hại cho sức khỏe cộng đồng.",
+                        breakdown: "・ **Given that urban populations are expanding...**: Mệnh đề nguyên nhân căn cứ.\n・ **...stems from...**: Bắt nguồn từ.\n・ **..., thereby worsening...**: **Thereby + V-ing** diễn tả hệ quả logic tiếp theo."
+                    }
+                ]
+            },
+            {
+                id: "topic-9",
+                title: "9. Subject-Verb Inversion after Negative Adverbials",
+                shortDesc: "Đảo ngữ với các trạng từ phủ định (Not only, Seldom, Rarely)",
+                formula: [
+                    {
+                        name: "Negative Adverbial Inversion",
+                        structure: "Not only / Seldom / Rarely + Auxiliary + S + V",
+                        usage: "Tăng tính học thuật và nhấn mạnh ý nghĩa."
+                    }
+                ],
+                proTips: "Sử dụng ở câu mở đầu hoặc câu kết bài để tạo điểm nhấn mạnh mẽ và tăng thang điểm Grammatical Range (Band 7.0+).",
+                samples: [
+                    {
+                        id: "t9-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Music & Entertainment",
+                        question: "Do you listen to music often?",
+                        answerEn: "Absolutely. **Rarely do I start** my day without tuning into a relaxing podcast or instrumental music. **Not only does it boost** my focus for work, **but it also helps** relieve morning stress effectively.",
+                        answerVi: "Tất nhiên rồi. Hiếm khi tôi bắt đầu ngày mới mà không mở một podcast thư giãn hay nhạc không lời. Nó không chỉ giúp tôi tăng cường sự tập trung cho công việc mà còn giải tỏa căng thẳng buổi sáng rất hiệu quả.",
+                        breakdown: "<b>Rarely do I start...</b> (Đảo ngữ tạo điểm nhấn tần suất) + <b>Not only does it boost... but it also...</b> (Đảo ngữ Not only tăng liên kết)."
+                    },
+                    {
+                        id: "t9-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Technology in Education",
+                        question: "Should schools incorporate more artificial intelligence into teaching?",
+                        answerEn: "Undoubtedly. **Seldom have we witnessed** a technology with such transformative power. **Not only can AI customize** learning paths for individual students, **but it also alleviates** the administrative workload for teachers.",
+                        answerVi: "Chắc chắn rồi. Hiếm khi chúng ta chứng kiến một công nghệ có sức mạnh thay đổi lớn đến vậy. AI không chỉ có thể cá nhân hóa lộ trình học cho từng học sinh mà còn giảm bớt khối lượng công việc hành chính cho giáo viên.",
+                        breakdown: "<b>Seldom have we witnessed...</b> (Đảo ngữ HTHT) + <b>Not only can AI customize...</b> (Đảo ngữ với khuyết thiếu 'can')."
+                    }
+                ]
+            },
+            {
+                id: "topic-10",
+                title: "10. Future Perfect & Future Continuous",
+                shortDesc: "Thì Tương lai Hoàn thành & Tương lai Tiếp diễn",
+                formula: [
+                    {
+                        name: "Future Tenses",
+                        structure: "will have + V3/ed | will be + V-ing",
+                        usage: "Dự báo mốc thời gian hoặc hành động diễn ra trong tương lai."
+                    }
+                ],
+                proTips: "Cực kỳ hiệu quả khi nói về kế hoạch tương lai (Part 2) hoặc đưa ra nhận định/dự báo xu hướng xã hội trong 5-10 năm tới (Part 3).",
+                samples: [
+                    {
+                        id: "t10-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a goal you want to achieve",
+                        question: "Describe a goal you want to achieve in the future",
+                        answerEn: "By this time next year, **I will have completed** my master's degree in International Finance. At that point, **I will be working** for a multinational corporation to gain practical experience.",
+                        answerVi: "Vào thời điểm này năm sau, tôi sẽ hoàn thành xong bằng thạc sĩ Tài chính Quốc tế. Lúc đó, tôi sẽ đang làm việc cho một tập đoàn đa quốc gia để tích lũy kinh nghiệm thực tế.",
+                        breakdown: "<b>will have completed</b> (Hoàn thành trước mốc tương lai) + <b>will be working</b> (Hành động đang diễn ra tại mốc tương lai)."
+                    },
+                    {
+                        id: "t10-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Environmental Protection",
+                        question: "What will happen to our environment in the next few decades?",
+                        answerEn: "If governments fail to enforce stricter environmental policies, many coastal cities **will be suffering** from severe flooding by 2050. Hopefully, by then, scientists **will have developed** more sustainable green technologies.",
+                        answerVi: "Nếu các chính phủ không thực thi chính sách môi trường nghiêm ngặt hơn, nhiều thành phố ven biển sẽ đang gánh chịu lũ lụt nghiêm trọng vào năm 2050. Hy vọng đến lúc đó, các nhà khoa học sẽ phát triển xong công nghệ xanh bền vững.",
+                        breakdown: "<b>will be suffering</b> (Trạng thái diễn ra) + <b>will have developed</b> (Hoàn thành trước mốc 2050)."
+                    }
+                ]
+            },
+            {
+                id: "topic-11",
+                title: "11. Mixed Conditionals (Type 3 + Type 2)",
+                shortDesc: "Câu điều kiện hỗn hợp (Giả định quá khứ dẫn đến kết quả hiện tại)",
+                formula: [
+                    {
+                        name: "Mixed Conditional",
+                        structure: "If + S + had + V3/ed, S + would/could + V-bare",
+                        usage: "Liên kết sự kiện quá khứ với kết quả hiện tại."
+                    }
+                ],
+                proTips: "Dùng để giải thích lý do tại sao hiện tại bạn lại sở hữu một kỹ năng, sở thích hoặc thói quen nào đó nhờ vào một sự kiện trong quá khứ.",
+                samples: [
+                    {
+                        id: "t11-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Languages & Learning",
+                        question: "Why did you decide to learn English?",
+                        answerEn: "To be honest, **if my parents hadn't forced me** to attend English classes when I was a child, **I wouldn't be fluent** enough to express my ideas confidently right now.",
+                        answerVi: "Thành thật mà nói, nếu bố mẹ tôi không ép tôi đi học các lớp tiếng Anh hồi còn nhỏ, thì bây giờ tôi đã không đủ lưu loát để tự tin diễn đạt ý kiến của mình như hiện tại.",
+                        breakdown: "<b>If my parents hadn't forced me...</b> (Quá khứ không có thật) + <b>I wouldn't be fluent... right now</b> (Kết quả hiện tại)."
+                    },
+                    {
+                        id: "t11-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a decision that changed your life",
+                        question: "Describe a decision that changed your life",
+                        answerEn: "Choosing to study abroad was a huge turning point. **If I hadn't taken** that leap of faith 3 years ago, **I wouldn't have** this open-minded perspective and independent lifestyle today.",
+                        answerVi: "Quyết định đi du học là một bước ngoặt lớn. Nếu 3 năm trước tôi không dũng cảm thực hiện bước ngoặt đó, thì hôm nay tôi đã không có tư duy cởi mở và lối sống tự lập như thế này.",
+                        breakdown: "<b>If I hadn't taken... 3 years ago</b> + <b>I wouldn't have... today</b>."
+                    }
+                ]
+            },
+            {
+                id: "topic-12",
+                title: "12. Subjunctive Mood (It's high time / S + suggest that...)",
+                shortDesc: "Thức giả định (Đã đến lúc / Kiến nghị hành động)",
+                formula: [
+                    {
+                        name: "Subjunctive Structure",
+                        structure: "It is high time + S + V2/ed | S + suggest + that + S + (should) + V-bare",
+                        usage: "Đưa ra đề xuất hoặc tính cấp thiết của hành động."
+                    }
+                ],
+                proTips: "Cực kỳ thích hợp cho Part 3 khi được hỏi về giải pháp cho các vấn đề xã hội hoặc bài học kinh nghiệm trong Part 2.",
+                samples: [
+                    {
+                        id: "t12-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a problem while shopping",
+                        question: "Describe a problem you had while shopping",
+                        answerEn: "After receiving a damaged product, I realized that **it was high time I became** a more cautious online buyer and always read customer reviews thoroughly.",
+                        answerVi: "Sau khi nhận được sản phẩm bị hỏng, tôi nhận ra đã đến lúc mình phải trở thành một người mua hàng trực tuyến cẩn trọng hơn và luôn đọc kỹ đánh giá của khách hàng.",
+                        breakdown: "<b>it was high time I became...</b> (Đã đến lúc cần phải làm gì - dùng quá khứ đơn)."
+                    },
+                    {
+                        id: "t12-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Public Health & Traffic",
+                        question: "What measures should be taken to reduce urban traffic congestion?",
+                        answerEn: "**It's high time local authorities invested** heavily in public transit systems. Furthermore, urban planners strongly **recommend that governments introduce** congestion pricing.",
+                        answerVi: "Đã đến lúc các chính quyền địa phương phải đầu tư mạnh mẽ vào hệ thống giao thông công cộng. Hơn nữa, các nhà hoạch định đô thị đề xuất mạnh mẽ rằng chính phủ nên áp dụng phí ùn tắc.",
+                        breakdown: "<b>It's high time local authorities invested...</b> + <b>recommend that governments introduce...</b> (Động từ nguyên mẫu không 'to')."
+                    }
+                ]
+            },
+            {
+                id: "topic-13",
+                title: "13. Participle Clauses for Reason & Result",
+                shortDesc: "Mệnh đề phân từ chỉ Nguyên nhân (-ing) & Kết quả (thus/thereby -ing)",
+                formula: [
+                    {
+                        name: "Participle Clauses",
+                        structure: "Having + V3/ed, S + V... | S + V..., thus/thereby + V-ing",
+                        usage: "Rút gọn câu, liên kết nguyên nhân - kết quả mượt mà."
+                    }
+                ],
+                proTips: "Giúp rút ngắn câu, biến các câu ngắn rời rạc thành câu ghép cao cấp.",
+                samples: [
+                    {
+                        id: "t13-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Hobbies & Relaxation",
+                        question: "What do you do in your free time?",
+                        answerEn: "**Having worked** in front of a computer all day, I usually prefer outdoor activities like jogging in the park, **thereby getting** fresh air and recharging my batteries.",
+                        answerVi: "Vì đã làm việc trước máy tính cả ngày, tôi thường thích các hoạt động ngoài trời hơn như chạy bộ trong công viên, nhờ đó hít thở không khí an lành và nạp lại năng lượng.",
+                        breakdown: "<b>Having worked...</b> (Phân từ hoàn thành chỉ nguyên nhân) + <b>...thereby getting...</b> (Chỉ kết quả rút gọn)."
+                    },
+                    {
+                        id: "t13-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Remote Work Trends",
+                        question: "How does working from home affect employees?",
+                        answerEn: "**Eliminating** the need for daily commuting, remote work saves employees hours each day, **thereby allowing** them to achieve a better work-life balance.",
+                        answerVi: "Nhờ loại bỏ nhu cầu đi lại hàng ngày, việc làm việc từ xa giúp nhân viên tiết kiệm hàng giờ mỗi ngày, từ đó cho phép họ đạt được sự cân bằng tốt hơn giữa công việc và cuộc sống.",
+                        breakdown: "<b>Eliminating...</b> (Phân từ hiện tại chỉ nguyên nhân) + <b>...thereby allowing them...</b> (Chỉ hệ quả)."
+                    }
+                ]
+            },
+            {
+                id: "topic-14",
+                title: "14. Double Comparatives",
+                shortDesc: "So sánh kép (The more..., the more...)",
+                formula: [
+                    {
+                        name: "Double Comparative",
+                        structure: "The + comparative + S + V, the + comparative + S + V",
+                        usage: "Diễn tả mối quan hệ tỷ lệ thuận/nghịch."
+                    }
+                ],
+                proTips: "Cực kỳ thích hợp để giải thích mối quan hệ nguyên nhân - kết quả mang tính tỷ lệ thuận/nghịch trong Part 1 và Part 3.",
+                samples: [
+                    {
+                        id: "t14-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Shopping & Budgeting",
+                        question: "Do you like buying expensive items?",
+                        answerEn: "Not necessarily. I've realized that **the more expensive** a product is, **the more carefully** I have to consider whether it's worth my money.",
+                        answerVi: "Không hẳn. Tôi nhận ra rằng một sản phẩm càng đắt tiền thì tôi càng phải cân nhắc kỹ lưỡng xem nó có xứng đáng với tiền của mình hay không.",
+                        breakdown: "<b>The more expensive... the more carefully I have to consider...</b> (So sánh kép tỷ lệ thuận)."
+                    },
+                    {
+                        id: "t14-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Social Media Impact",
+                        question: "Does social media make people feel more isolated?",
+                        answerEn: "In many cases, yes. **The more time** people spend engaging with virtual personas online, **the less genuine human connection** they experience in real life.",
+                        answerVi: "Trong nhiều trường hợp là có. Mọi người càng dành nhiều thời gian tương tác với các hình mẫu ảo trên mạng thì họ càng ít trải nghiệm được sự kết nối con người thực sự trong đời thực.",
+                        breakdown: "<b>The more time people spend... the less genuine human connection they experience...</b> (So sánh kép tỷ lệ nghịch)."
+                    }
+                ]
+            },
+            {
+                id: "topic-15",
+                title: "15. Parallel Structure (Parallelism)",
+                shortDesc: "Cấu trúc song song (Liệt kê đồng dạng ngữ pháp)",
+                formula: [
+                    {
+                        name: "Parallelism",
+                        structure: "S + V + [V1-ing, V2-ing, and V3-ing]",
+                        usage: "Duy trì tính đồng dạng cú pháp trong chuỗi liệt kê."
+                    }
+                ],
+                proTips: "Giúp câu trả lời dài có nhịp điệu mượt mà, mạch lạc và tự nhiên như người bản xứ khi mô tả sở thích hoặc trải nghiệm.",
+                samples: [
+                    {
+                        id: "t15-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Weekend Activities",
+                        question: "What do you usually do on weekends?",
+                        answerEn: "My weekends are usually spent **catching** up on sleep, **exploring** cozy coffee shops with friends, and **unwinding** with a good novel.",
+                        answerVi: "Cuối tuần của tôi thường dành cho việc ngủ bù, khám phá các quán cà phê ấm cúng cùng bạn bè và thư giãn với một cuốn tiểu thuyết hay.",
+                        breakdown: "<b>catching...</b>, <b>exploring...</b>, and <b>unwinding...</b> (Song song dạng V-ing)."
+                    },
+                    {
+                        id: "t15-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a memorable vacation",
+                        question: "Describe a memorable vacation",
+                        answerEn: "That trip was unforgettable because we spent our days **hiking** through pristine forests, **trying** authentic local street food, and **immersing** ourselves in the culture.",
+                        answerVi: "Chuyến đi đó thật đáng nhớ vì chúng tôi đã dành những ngày đó để đi bộ qua những khu rừng nguyên sinh, thử đồ ăn đường phố bản địa và hòa mình vào văn hóa.",
+                        breakdown: "<b>hiking...</b>, <b>trying...</b>, and <b>immersing...</b> (Đồng dạng cấu trúc V-ing trong liệt kê)."
+                    }
+                ]
+            },
+            {
+                id: "topic-16",
+                title: "16. Discourse Markers & Parenthetical Insertions",
+                shortDesc: "Từ nối hội thoại & Mệnh đề chêm (To be perfectly honest, Needless to say)",
+                formula: [
+                    {
+                        name: "Discourse Markers",
+                        structure: "To be perfectly honest, / Strictly speaking, / Needless to say,",
+                        usage: "Tăng độ trôi chảy (Fluency) và tạo thời gian suy nghĩ."
+                    }
+                ],
+                proTips: "Tăng điểm Fluency & Coherence bằng cách tạo thời gian suy nghĩ tự nhiên và thể hiện thái độ/quan điểm rõ ràng của người nói.",
+                samples: [
+                    {
+                        id: "t16-p1",
+                        part: "part1",
+                        partTitle: "Part 1: Cooking & Food",
+                        question: "Do you enjoy cooking at home?",
+                        answerEn: "**To be perfectly honest**, I'm not much of a cook. Preparing meals, **as you might expect**, takes up a lot of time that I simply don't have.",
+                        answerVi: "Thành thật mà nói, tôi không phải là người thích nấu ăn cho lắm. Việc chuẩn bị bữa ăn, như bạn có thể đoán đấy, tốn rất nhiều thời gian mà tôi đơn giản là không có.",
+                        breakdown: "<b>To be perfectly honest</b> + <b>, as you might expect,</b> (Mệnh đề chêm phản xạ hội thoại tự nhiên)."
+                    },
+                    {
+                        id: "t16-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Work-Life Balance",
+                        question: "Is it difficult to maintain a work-life balance nowadays?",
+                        answerEn: "**Strictly speaking**, modern technology makes it almost impossible to completely disconnect. **As far as I'm concerned**, boundaries between work and personal life have become blurred.",
+                        answerVi: "Nói một cách nghiêm túc, công nghệ hiện đại khiến việc ngắt kết nối hoàn toàn gần như là không thể. Theo như tôi thấy, ranh giới giữa công việc và đời sống cá nhân đã trở nên mờ nhạt.",
+                        breakdown: "<b>Strictly speaking,</b> + <b>As far as I'm concerned,</b> (Cụm định hướng lập luận chuyên nghiệp cho Part 3)."
+                    }
+                ]
+            },
+            {
+                id: "topic-17",
+                title: "17. Modals of Deduction in the Past",
+                shortDesc: "Động từ khuyết thiếu suy đoán quá khứ (Must have / Could have / Might have)",
+                formula: [
+                    {
+                        name: "Past Deduction",
+                        structure: "S + must / could / might / couldn't + have + V3/ed",
+                        usage: "Suy đoán logic về sự việc đã xảy ra trong quá khứ."
+                    }
+                ],
+                proTips: "Dùng để suy đoán về nguyên nhân của một sự kiện đã xảy ra trong quá khứ khi bạn không chắc chắn 100%.",
+                samples: [
+                    {
+                        id: "t17-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a time you got lost",
+                        question: "Describe a time you got lost",
+                        answerEn: "I couldn't find my way back to the hotel. I **must have taken** a wrong turn at the intersection without realizing it, as all street signs looked unfamiliar.",
+                        answerVi: "Tôi đã không thể tìm thấy đường trở về khách sạn. Chắc hẳn tôi đã rẽ sai ở ngã tư mà không nhận ra, vì tất cả các biển báo đường phố đều trông lạ lẫm.",
+                        breakdown: "<b>I must have taken...</b> (Suy đoán chắc chắn đến 90% về sự việc trong quá khứ)."
+                    },
+                    {
+                        id: "t17-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Historical Events & Archaeology",
+                        question: "Why did ancient civilizations build such large monuments?",
+                        answerEn: "Historians suggest that early societies **might have constructed** these massive structures for religious rituals, though some argue they **could have served** as symbols of power.",
+                        answerVi: "Các nhà lịch sử gợi ý rằng các xã hội thời xưa có thể đã xây dựng những công trình đồ sộ này cho các nghi lễ tôn giáo, mặc dù một số người cho rằng chúng có thể đóng vai trò biểu tượng quyền lực.",
+                        breakdown: "<b>might have constructed...</b> / <b>could have served...</b> (Suy đoán mang tính học thuật)."
+                    }
+                ]
+            },
+            {
+                id: "topic-18",
+                title: "18. Nouns & Nominalization",
+                shortDesc: "Danh từ hóa (Biến động từ/tính từ thành cụm danh từ trang trọng)",
+                formula: [
+                    {
+                        name: "Nominalization",
+                        structure: "Chuyển cấu trúc 'S + V + O' thành 'There is a + N + in...' hoặc 'The + N + of...'",
+                        usage: "Tăng độ khách quan, trang trọng và học thuật cho bài nói."
+                    }
+                ],
+                proTips: "Giúp bài nói ở Part 2 & Part 3 trở nên trang trọng, học thuật và khách quan hơn hẳn so với việc chỉ dùng động từ đơn giản.",
+                samples: [
+                    {
+                        id: "t18-p2",
+                        part: "part2",
+                        partTitle: "Part 2: Describe a skill you learned",
+                        question: "Describe a skill you learned",
+                        answerEn: "Mastering public speaking led to **a significant improvement** in my confidence. **The gradual reduction** of my anxiety allowed me to present ideas convincingly.",
+                        answerVi: "Việc thành thạo kỹ năng nói trước công chúng đã dẫn đến sự cải thiện đáng kể về sự tự tin của tôi. Sự giảm dần nỗi lo âu đã cho phép tôi trình bày các ý tưởng thuyết phục hơn.",
+                        breakdown: "Danh từ hóa: <b>a significant improvement in...</b> & <b>The gradual reduction of...</b> tạo phong cách học thuật."
+                    },
+                    {
+                        id: "t18-p3",
+                        part: "part3",
+                        partTitle: "Part 3: Globalization & Culture",
+                        question: "How has globalization affected local traditions?",
+                        answerEn: "**The rapid expansion** of international tourism has caused **the erosion** of traditional customs in several regions, despite the economic growth it brings.",
+                        answerVi: "Sự mở rộng nhanh chóng của ngành du lịch quốc tế đã gây ra sự xói mòn các phong tục truyền thống ở một số khu vực, mặc dù nó mang lại sự phát triển kinh tế.",
+                        breakdown: "Danh từ hóa: <b>The rapid expansion of...</b> và <b>the erosion of traditional customs...</b> đạt tiêu chí Band 8.0+."
+                    }
+                ]
+            },
+
+{
+        id: "topic-19",
+        title: "19. Ellipsis & Substitution (Lược bỏ & Thay thế từ)",
+        shortDesc: "Lược bỏ bớt các thành phần lặp lại trong câu trả lời để tạo sự tự nhiên, linh hoạt và giống văn nói bản xứ hơn.",
+        formula: [
+            {
+                name: "Clausal Ellipsis",
+                structure: "S + auxiliary (do/can/have), / if so / if not / when necessary",
+                usage: "Tránh lặp lại toàn bộ vế câu trước đó một cách máy móc."
+            }
+        ],
+        proTips: "Dùng 'If so,' hoặc 'If not,' để phản hồi nhanh chóng trong các câu hỏi yes/no ở Part 1 hoặc Part 3 mà không cần lặp lại dài dòng.",
+        samples: [
+            {
+                id: "t19-p1",
+                part: "part1",
+                partTitle: "Part 1: Sports & Fitness",
+                question: "Do you exercise regularly?",
+                answerEn: "Yes, I try to hit the gym at least three times a week. **If possible**, I also go for a morning jog, **though admittedly, that doesn't happen very often**.",
+                vietnamese: "Có chứ, tôi cố gắng đến phòng gym ít nhất ba tuần một lần. Nếu có thể, tôi cũng đi chạy bộ buổi sáng, mặc dù phải thừa nhận là việc đó không diễn ra thường xuyên lắm.",
+                breakdown: "<b>If possible</b> (Lược bỏ 'It is possible') + <b>though admittedly, that doesn't...</b> giúp câu trả lời súc tích và tự nhiên."
+            },
+            {
+                id: "t19-p3",
+                part: "part3",
+                partTitle: "Part 3: Online Shopping Trends",
+                question: "Do you think physical stores will eventually disappear?",
+                answerEn: "I doubt it. **While some smaller shops might close down**, brick-and-mortar stores offering immersive experiences will likely survive, **if only because** people still crave tactile shopping.",
+                vietnamese: "Tôi nghi ngờ điều đó. Trong khi một số cửa hàng nhỏ hơn có thể đóng cửa, các cửa hàng truyền thống mang lại trải nghiệm nhập vai có thể vẫn sống sót, dẫu chỉ vì mọi người vẫn khao khát trải nghiệm mua sắm sờ nắm thực tế.",
+                breakdown: "<b>if only because...</b> (Chỉ vì lý do là...) tạo cấu trúc rút gọn và chốt ý mạnh mẽ."
+            }
+        ]
+    },
+    {
+        id: "topic-20",
+        title: "20. Advanced Relative Clauses with Prepositions",
+        shortDesc: "Mệnh đề quan hệ nâng cao có giới từ đứng trước (in which, of which, to whom) cho văn phong trang trọng.",
+        formula: [
+            {
+                name: "Preposition + Relative Pronoun",
+                structure: "Noun + prep + which / whom + Clause",
+                usage: "Nâng cấp độ trang trọng và chính xác tuyệt đối cho Part 3."
+            }
+        ],
+        proTips: "Rất phù hợp khi nói về môi trường làm việc, hệ thống xã hội, hoặc các mối quan hệ phức tạp ở Part 3.",
+        samples: [
+            {
+                id: "t20-p2",
+                part: "part2",
+                partTitle: "Part 2: Describe a workplace or organization",
+                question: "Describe a company or organization you know well",
+                answerEn: "I used to work for a tech startup **in which creativity and autonomy were highly encouraged**. It was an environment **to which every employee contributed** actively.",
+                vietnamese: "Tôi từng làm việc cho một startup công nghệ mà ở đó sự sáng tạo và tính tự chủ rất được khuyến khích. Đó là môi trường mà mọi nhân viên đều đóng góp tích cực.",
+                breakdown: "<b>in which creativity...</b> (thay vì 'where... which is...') + <b>to whom/which...</b> tăng độ chính xác ngữ pháp lên mức tối đa."
+            },
+            {
+                id: "t20-p3",
+                part: "part3",
+                partTitle: "Part 3: Workplace Culture",
+                question: "What factors make a workplace successful?",
+                answerEn: "A successful corporate culture relies heavily on transparent communication, **without which trust between management and staff would quickly deteriorate**.",
+                vietnamese: "Văn hóa doanh nghiệp thành công phụ thuộc rất nhiều vào giao tiếp minh bạch, nếu không có điều đó thì lòng tin giữa ban quản lý và nhân viên sẽ nhanh chóng suy giảm.",
+                breakdown: "<b>without which...</b> (Mệnh đề quan hệ thay thế cực kỳ ăn điểm để diễn tả điều kiện cần)."
+            }
+        ]
+    },
+    {
+        id: "topic-21",
+        title: "21. Reporting Passive Structures (Bị động tường thuật)",
+        shortDesc: "Cấu trúc It is said/reported/estimated that hoặc S + is reported to + V để khách quan hóa thông tin.",
+        formula: [
+            {
+                name: "Impersonal Reporting",
+                structure: "It is estimated/reported/believed that + Clause | S + is said to have + V3",
+                usage: "Dẫn dắt các số liệu, nhận định chung của xã hội trong Part 3."
+            }
+        ],
+        proTips: "Thay vì dùng 'People say that...', hãy dùng 'It is widely estimated that...' để ghi điểm tuyệt đối về từ vựng học thuật.",
+        samples: [
+            {
+                id: "t21-p3",
+                part: "part3",
+                partTitle: "Part 3: Urban Development",
+                question: "How is urbanization changing modern cities?",
+                answerEn: "**It is often estimated that** over 70% of the global population will reside in metropolitan areas by 2050. Furthermore, mega-cities **are reported to consume** the vast majority of global energy resources.",
+                vietnamese: "Người ta thường ước tính rằng hơn 70% dân số toàn cầu sẽ cư trú tại các khu đô thị vào năm 2050. Hơn nữa, các siêu đô thị được cho là tiêu thụ phần lớn tài nguyên năng lượng toàn cầu.",
+                breakdown: "<b>It is often estimated that...</b> + <b>are reported to consume...</b> tạo giọng văn báo chí, học thuật."
+            }
+        ]
+    },
+    {
+        id: "topic-22",
+        title: "22. Quantifiers & Intensifiers for Emphasis",
+        shortDesc: "Sử dụng các lượng từ nâng cao và từ nhấn mạnh (A vast array of, Far from being, By no means)",
+        formula: [
+            {
+                name: "Advanced Quantifiers",
+                structure: "A wide spectrum of / A multitude of / Far from being + Adj",
+                usage: "Nhấn mạnh số lượng hoặc phủ định mạnh mẽ một cách tinh tế."
+            }
+        ],
+        proTips: "Dùng 'Far from being boring, ...' hoặc 'A multitude of factors...' để mở đầu câu trả lời sắc sảo.",
+        samples: [
+            {
+                id: "t22-p2",
+                part: "part2",
+                partTitle: "Part 2: Describe a complex subject",
+                question: "Describe a subject you studied that was difficult",
+                answerEn: "Physics was always challenging for me. **Far from being just dry equations**, it opened up **a multitude of fascinating insights** into how the physical universe operates.",
+                vietnamese: "Môn Vật lý luôn là một thử thách đối với tôi. Khác xa với việc chỉ là những công thức khô khan, nó mở ra vô số góc nhìn thú vị về cách vũ trụ vật lý vận hành.",
+                breakdown: "<b>Far from being...</b> (Khác xa với việc...) + <b>a multitude of fascinating insights</b> (Lượng từ phong phú)."
+            },
+            {
+                id: "t22-p3",
+                part: "part3",
+                partTitle: "Part 3: Education & Innovation",
+                question: "Is modern education facing any major challenges?",
+                answerEn: "Yes, definitely. Educational institutions are currently confronted with **a wide spectrum of issues**, **by no means limited to** budget constraints.",
+                vietnamese: "Vâng, chắc chắn rồi. Các cơ sở giáo dục hiện đang phải đối mặt với một loạt các vấn đề rộng lớn, hoàn toàn không chỉ giới hạn ở những hạn chế về ngân sách.",
+                breakdown: "<b>a wide spectrum of issues</b> + <b>by no means limited to...</b> (hoàn toàn không bị giới hạn bởi...)."
+            }
+        ]
+    },
+    {
+        id: "topic-23",
+        title: "23. Whatever / However / Whenever Clauses",
+        shortDesc: "Mệnh đề nhượng bộ mở rộng với từ để hỏi + -ever (Whatever happens, However hard it is)",
+        formula: [
+            {
+                name: "Wh-ever Clauses",
+                structure: "Whatever / No matter what + S + V, S + V",
+                usage: "Diễn tả sự bất chấp hoàn cảnh, tăng độ trôi chảy và biểu cảm cho câu trả lời."
+            }
+        ],
+        proTips: "Rất hay khi dùng để chia sẻ quan điểm kiên định hoặc kể chuyện vượt khó trong Part 2.",
+        samples: [
+            {
+                id: "t23-p2",
+                part: "part2",
+                partTitle: "Part 2: Describe a challenge you overcame",
+                question: "Describe a time you faced a difficult challenge",
+                answerEn: "**However overwhelming the workload seemed** at first, I managed to break it down into manageable tasks. **Whatever obstacles crossed my path**, I stayed focused on the ultimate goal.",
+                vietnamese: "Dù khối lượng công việc có vẻ quá sức đến đâu lúc ban đầu, tôi vẫn cố gắng chia nhỏ nó thành các nhiệm vụ có thể quản lý được. Bất kỳ trở ngại nào cản đường, tôi vẫn giữ vững sự tập trung vào mục tiêu cuối cùng.",
+                breakdown: "<b>However overwhelming... seemed</b> (Mệnh đề nhượng bộ với However + adj) + <b>Whatever obstacles crossed my path</b> (Dù bất cứ trở ngại nào)."
+            }
+        ]
+    },
+
+
+
+{
+        id: "topic-24",
+        title: "24. Advanced Tense Combinations & Aspect (Phối hợp thì & Thể hoàn thành nâng cao)",
+        shortDesc: "Sử dụng Hiện tại hoàn thành (liên kết quá khứ với hiện tại), Quá khứ hoàn thành và HTHT tiếp diễn để diễn tả quá trình tích lũy kinh nghiệm.",
+        formula: [
+            {
+                name: "Present Perfect Continuous for Experience/Duration",
+                structure: "S + have/has been + V-ing (for/since/over the past few years)",
+                usage: "Nhấn mạnh quá trình hành động kéo dài từ quá khứ đến hiện tại."
+            },
+            {
+                name: "Past Perfect for Prior Actions",
+                structure: "S + had + V3/ed + before / by the time + S + V-ed",
+                usage: "Làm nổi bật sự việc xảy ra trước một mốc hoặc hành động khác trong quá khứ."
+            }
+        ],
+        proTips: "Khi giám khảo hỏi về kinh nghiệm sống, sở thích lâu năm (ví dụ: 'How long have you been...?'), hãy dùng Hiện tại hoàn thành tiếp diễn kèm mốc thời gian cụ thể để ghi điểm tối đa.",
+        samples: [
+            {
+                id: "t24-p1",
+                part: "part1",
+                partTitle: "Part 1: Hobbies & Interests",
+                question: "How long have you been interested in photography?",
+                answerEn: "**I have been passionate about** capturing landscape photos **for over five years now**. During this period, **I have accumulated** a wealth of practical knowledge about lighting and composition.",
+                vietnamese: "Tôi đã có đam mê chụp ảnh phong cảnh được hơn năm năm nay. Trong khoảng thời gian này, tôi đã tích lũy được lượng kiến thức thực tế phong phú về ánh sáng và bố cục.",
+                breakdown: "<b>I have been passionate about... for over five years</b> (HTHT tiếp diễn/trạng thái kéo dài) + <b>I have accumulated...</b> (HTHT nhấn mạnh kết quả đạt được đến hiện tại)."
+            },
+            {
+                id: "t24-p2",
+                part: "part2",
+                partTitle: "Part 2: Describe an unforgettable event",
+                question: "Describe an unforgettable event or competition you participated in",
+                answerEn: "Before stepping onto the stage for my first public speaking contest, **I had been practicing** my speech in front of the mirror for weeks. By the time the judges announced my name, **I had realized** that all my persistent efforts **had finally paid off**.",
+                vietnamese: "Trước khi bước lên sân khấu cho cuộc thi nói trước công chúng đầu tiên của mình, tôi đã luyện tập bài diễn thuyết trước gương trong nhiều tuần. Vào lúc ban giám khảo xướng tên tôi, tôi nhận ra rằng mọi nỗ lực bền bỉ của mình cuối cùng đã được đền đáp.",
+                breakdown: "<b>I had been practicing... for weeks</b> (Quá khứ hoàn thành tiếp diễn nhấn mạnh độ dài hành động trước quá khứ) + <b>I had realized... had paid off</b> (Quá khứ hoàn thành)."
+            },
+            {
+                id: "t24-p3",
+                part: "part3",
+                partTitle: "Part 3: Skill Development & Education",
+                question: "Why is it important for adults to keep learning new skills?",
+                answerEn: "In today's fast-paced world, people who **have not adapted** to technological shifts often find themselves lagging behind. Society **has been evolving** at such a breakneck speed that continuous learning is no longer optional.",
+                vietnamese: "Trong thế giới chuyển động nhanh ngày nay, những người không thích nghi với sự thay đổi công nghệ thường thấy mình bịt tụt lại phía sau. Xã hội đã và đang tiến hóa với tốc độ chóng mặt đến mức việc học tập liên tục không còn là tùy chọn nữa.",
+                breakdown: "<b>have not adapted...</b> (HTHT nhấn mạnh hệ quả ở hiện tại) + <b>has been evolving...</b> (HTHT tiếp diễn nhấn mạnh xu hướng tiến hóa liên tục)."
+            }
+        ]
+    },
+
+
+{
+        id: "topic-25",
+        title: "25. Present Simple vs. Present Continuous (HTĐ vs. HTTD)",
+        shortDesc: "Sử dụng Thì Hiện tại đơn cho thói quen/sự thật và Hiện tại tiếp diễn cho các sự thay đổi, xu hướng đang diễn ra.",
+        formula: [
+            {
+                name: "Present Simple (Habits & Facts)",
+                structure: "S + V(s/es) | S + am/is/are + N/Adj",
+                usage: "Nói về sở thích, công việc, thói quen lặp đi lặp lại hàng ngày."
+            },
+            {
+                name: "Present Continuous (Trends & Temporary States)",
+                structure: "S + am/is/are + V-ing",
+                usage: "Diễn tả hành động đang diễn ra tạm thời hoặc các xu hướng xã hội đang thay đổi."
+            }
+        ],
+        proTips: "Dùng Present Continuous khi trả lời các câu hỏi về sự thay đổi: 'These days, more and more people are choosing to...'",
+        samples: [
+            {
+                id: "t25-p1",
+                part: "part1",
+                partTitle: "Part 1: Daily Routine & Work",
+                question: "What do you usually do in the morning?",
+                answerEn: "I **usually wake up** at 6 AM and **have** a light breakfast. However, **these days I am waking up** a bit earlier because **I am preparing** for an upcoming examination.",
+                vietnamese: "Tôi thường thức dậy lúc 6 giờ sáng và ăn sáng nhẹ. Tuy nhiên, dạo này tôi đang thức dậy sớm hơn một chút vì tôi đang chuẩn bị cho một kỳ thi sắp tới.",
+                breakdown: "<b>I usually wake up... and have...</b> (HTĐ nói về thói quen cố định) + <b>these days I am waking up... I am preparing...</b> (HTTD nói về trạng thái tạm thời dạo gần đây)."
+            },
+            {
+                id: "t25-p3",
+                part: "part3",
+                partTitle: "Part 3: Social Media & Trends",
+                question: "How are shopping habits changing in your country?",
+                answerEn: "Generally, older people still **prefer** shopping in traditional markets. However, the younger generation **is gradually shifting** towards online platforms because **it saves** a lot of time.",
+                vietnamese: "Nhìn chung, người lớn tuổi vẫn thích đi chợ truyền thống hơn. Tuy nhiên, thế hệ trẻ hơn đang dần chuyển sang các nền tảng trực tuyến vì nó tiết kiệm rất nhiều thời gian.",
+                breakdown: "<b>older people still prefer...</b> (HTĐ sự thật) + <b>is gradually shifting...</b> (HTTD chỉ sự thay đổi xu hướng)."
+            }
+        ]
+    },
+    {
+        id: "topic-26",
+        title: "26. Past Simple & 'Used to' (Quá khứ đơn & Thói quen cũ)",
+        shortDesc: "Tái hiện các trải nghiệm, kỷ niệm đã qua và so sánh sự khác biệt giữa quá khứ với hiện tại một cách rõ ràng.",
+        formula: [
+            {
+                name: "Past Simple",
+                structure: "S + V2/ed + time expression (yesterday, last year, in 2020)",
+                usage: "Kể lại một sự kiện đã xảy ra và kết thúc hoàn toàn tại mốc thời gian xác định."
+            },
+            {
+                name: "Used to + V-bare",
+                structure: "S + used to + V-bare / didn't use to + V-bare",
+                usage: "Từng làm gì trong quá khứ nhưng bây giờ không còn làm nữa."
+            }
+        ],
+        proTips: "Rất tự nhiên khi mở đầu câu Part 1 bằng: 'When I was younger, I used to..., but now I prefer...'",
+        samples: [
+            {
+                id: "t26-p1",
+                part: "part1",
+                partTitle: "Part 1: Hobbies & Free Time",
+                question: "Do you play any sports?",
+                answerEn: "Well, **I used to play** football every weekend when I was in high school. But now, **I don't have** much free time, so **I just go** jogging occasionally.",
+                vietnamese: "Chà, tôi từng chơi bóng đá mỗi cuối tuần khi còn học cấp ba. Nhưng hiện tại, tôi không có nhiều thời gian rảnh, nên tôi chỉ thỉnh thoảng đi chạy bộ thôi.",
+                breakdown: "<b>I used to play... when I was...</b> (Thói quen trong quá khứ đã chấm dứt) + <b>now, I don't have... I just go...</b> (Đối lập với hiện tại)."
+            },
+            {
+                id: "t26-p2",
+                part: "part2",
+                partTitle: "Part 2: Describe a memorable trip",
+                question: "Describe a trip you took in the past",
+                answerEn: "Two years ago, **I traveled** to Da Lat with my best friends. **We stayed** at a cozy homestay near the night market and **visited** many famous places.",
+                vietnamese: "Hai năm trước, tôi đã đi du lịch Đà Lạt cùng những người bạn thân nhất. Chúng tôi đã ở tại một homestay ấm cúng gần chợ đêm và ghé thăm nhiều địa điểm nổi tiếng.",
+                breakdown: "Chỗi động từ quá khứ đơn: <b>traveled</b>, <b>stayed</b>, <b>visited</b> có mốc thời gian rõ ràng (Two years ago)."
+            }
+        ]
+    },
+    {
+        id: "topic-27",
+        title: "27. Basic Cause & Effect (Because, So, As a result)",
+        shortDesc: "Liên kết ý kiến cá nhân với lý do và kết quả bằng các từ nối thông dụng để câu nói có logic và độ dài vừa phải.",
+        formula: [
+            {
+                name: "Reason & Result Connectors",
+                structure: "Clause A + because + Clause B | Clause A, so + Clause B | Clause A. As a result, Clause B",
+                usage: "Giải thích nguyên nhân trực tiếp và đưa ra hệ quả ngắn gọn."
+            }
+        ],
+        proTips: "Dùng cấu trúc 2 vế 'Main Point + Because + Reason' là công thức chuẩn nhất giúp bạn không bị bí ý ở Part 1.",
+        samples: [
+            {
+                id: "t27-p1",
+                part: "part1",
+                partTitle: "Part 1: Accommodation & Hometown",
+                question: "Do you like your neighborhood?",
+                answerEn: "Yes, I really like it **because it is very quiet and safe**. **As a result, I can enjoy** a peaceful atmosphere after a long stressful day at work.",
+                vietnamese: "Có chứ, tôi rất thích khu tôi sống vì nó rất yên tĩnh và an toàn. Nhờ đó, tôi có thể tận hưởng không khí bình yên sau một ngày làm việc căng thẳng.",
+                breakdown: "<b>because it is...</b> (Nêu lý do đơn giản) + <b>As a result, I can...</b> (Chỉ kết quả trực tiếp)."
+            },
+            {
+                id: "t27-p2",
+                part: "part2",
+                partTitle: "Part 2: Describe a decision",
+                question: "Describe an important decision you made",
+                answerEn: "I decided to move to a big city **because I wanted to find** better job opportunities. **It was tough at first, so I had to** work extremely hard to adapt.",
+                vietnamese: "Tôi quyết định chuyển đến một thành phố lớn vì muốn tìm kiếm cơ hội việc làm tốt hơn. Ban đầu rất khó khăn, vì vậy tôi đã phải làm việc cực kỳ chăm chỉ để thích nghi.",
+                breakdown: "<b>because I wanted...</b> + <b>so I had to...</b> (Cấu trúc nguyên nhân - kết quả tự nhiên)."
+            }
+        ]
+    },
+    {
+        id: "topic-28",
+        title: "28. Simple Comparisons (Comparative & Superlative)",
+        shortDesc: "So sánh hơn và so sánh nhất cơ bản để đối chiếu lựa chọn, sở thích hoặc đánh giá sự vật/sự việc.",
+        formula: [
+            {
+                name: "Comparatives & Superlatives",
+                structure: "S1 + V + Adj-er / more Adj + than + S2 | S + V + the most / Adj-est",
+                usage: "So sánh giữa 2 đối tượng hoặc lựa chọn thứ vượt trội nhất."
+            }
+        ],
+        proTips: "Khi được hỏi 'Do you prefer A or B?', hãy trả lời ngay: 'I definitely prefer A because it is much more convenient than B'.",
+        samples: [
+            {
+                id: "t28-p1",
+                part: "part1",
+                partTitle: "Part 1: Transport & Travel",
+                question: "Do you prefer traveling by bus or by motorbike?",
+                answerEn: "I prefer motorbikes because **they are much faster and more convenient than** buses, especially during heavy traffic hours in my city.",
+                vietnamese: "Tôi thích xe máy hơn vì chúng nhanh hơn và tiện lợi hơn nhiều so với xe buýt, đặc biệt là trong những giờ cao điểm ùn tắc giao thông ở thành phố của tôi.",
+                breakdown: "So sánh hơn: <b>much faster and more convenient than...</b> (Thêm 'much' trước so sánh hơn để nhấn mạnh mức độ)."
+            },
+            {
+                id: "t28-p3",
+                part: "part3",
+                partTitle: "Part 3: Shopping Options",
+                question: "What is the best way to shop for clothes?",
+                answerEn: "In my opinion, buying clothes in traditional stores is still **the safest option** because you can try them on. Online shopping is **cheaper**, but sizing can be wrong.",
+                vietnamese: "Theo tôi, mua quần áo ở các cửa hàng truyền thống vẫn là lựa chọn an toàn nhất vì bạn có thể thử đồ. Mua sắm trực tuyến rẻ hơn, nhưng kích cỡ có thể bị sai.",
+                breakdown: "So sánh nhất <b>the safest option</b> + So sánh hơn <b>cheaper</b>."
+            }
+        ]
+    },
+    {
+        id: "topic-29",
+        title: "29. Expressing Opinions & Intentions (I think, I plan to, I hope to)",
+        shortDesc: "Mẫu câu đưa ra quan điểm cá nhân và diễn tả dự định đơn giản cho hiện tại và tương lai gần.",
+        formula: [
+            {
+                name: "Opinion & Intention Phrases",
+                structure: "In my opinion, / I personally feel that... / I am planning to + V / I hope to + V",
+                usage: "Trình bày suy nghĩ cá nhân rõ ràng và nêu kế hoạch tương lai."
+            }
+        ],
+        proTips: "Thay vì ngập ngừng, hãy dùng ngay các cụm định hướng: 'Personally speaking, I think...' để mở đầu câu tự nhiên.",
+        samples: [
+            {
+                id: "t29-p1",
+                part: "part1",
+                partTitle: "Part 1: Future Plans",
+                question: "What do you plan to do this weekend?",
+                answerEn: "**Personally speaking, I am planning to** hang out with some close friends. **We hope to** visit a new coffee shop in the city center.",
+                vietnamese: "Cá nhân mà nói, tôi đang lên kế hoạch đi chơi với một vài người bạn thân. Chúng tôi hy vọng sẽ ghé thăm một quán cà phê mới ở trung tâm thành phố.",
+                breakdown: "<b>Personally speaking, I am planning to...</b> + <b>We hope to...</b> (Cấu trúc nói về dự định đơn giản, rõ ràng)."
+            },
+            {
+                id: "t29-p3",
+                part: "part3",
+                partTitle: "Part 3: Education Views",
+                question: "Do you think homework is necessary for young children?",
+                answerEn: "**In my opinion, I feel that** a small amount of homework is helpful. However, teachers should not give too much because **children also need time to** play and rest.",
+                vietnamese: "Theo ý kiến của tôi, tôi cảm thấy một lượng bài tập về nhà nhỏ là có ích. Tuy nhiên, giáo viên không nên giao quá nhiều vì trẻ em cũng cần thời gian để chơi đùa và nghỉ ngơi.",
+                breakdown: "<b>In my opinion, I feel that...</b> + <b>children also need time to...</b> (Diễn đạt quan điểm ngắn gọn, mạch lạc)."
+            }
+        ]
+    },
+
+
+{
+        id: "topic-30",
+        title: "30. Dummy Subject 'IT' (Chủ ngữ giả: It is + Adj + for/of sb + to V)",
+        shortDesc: "Sử dụng chủ ngữ giả 'It' để nhận xét, đánh giá độ khó, tính cần thiết hoặc cảm xúc đối với một hành động.",
+        formula: [
+            {
+                name: "It is + Adj + (for sb) + to V",
+                structure: "It is / was + Adj (vital/essential/difficult/easy) + (for sb) + to V",
+                usage: "Đánh giá mức độ, tầm quan trọng hoặc độ khó của một việc nào đó."
+            },
+            {
+                name: "It is + Adj + of sb + to V",
+                structure: "It is / was + Adj (kind/generous/careless) + of sb + to V",
+                usage: "Khen ngợi hoặc nhận xét tính cách của ai đó qua hành động."
+            }
+        ],
+        proTips: "Rất tự nhiên cho Part 1 & Part 3 khi đánh giá thói quen hoặc chính sách: 'It is essential for young people to learn...'",
+        samples: [
+            {
+                id: "t30-p1",
+                part: "part1",
+                partTitle: "Part 1: Health & Fitness",
+                question: "Is it easy to keep fit in your daily life?",
+                answerEn: "To be honest, **it is quite challenging for me to maintain** a regular workout routine because of my tight work schedule. However, I try my best to walk whenever possible.",
+                vietnamese: "Thành thật mà nói, khá là thách thức đối với tôi để duy trì một thói quen tập thể dục đều đặn vì lịch trình làm việc bận rộn. Tuy nhiên, tôi cố gắng hết sức để đi bộ bất cứ khi nào có thể.",
+                breakdown: "<b>it is quite challenging for me to maintain...</b> (Chủ ngữ giả 'It' diễn tả độ khó của việc duy trì tập luyện)."
+            },
+            {
+                id: "t30-p3",
+                part: "part3",
+                partTitle: "Part 3: Education & Life Skills",
+                question: "Should schools teach financial management to students?",
+                answerEn: "Absolutely. **It is crucial for high school students to understand** basic budgeting and saving before entering adulthood. **It would be unwise of educators to ignore** such practical skills.",
+                vietnamese: "Chắc chắn rồi. Cực kỳ quan trọng đối với học sinh cấp ba để hiểu về lập ngân sách và tiết kiệm cơ bản trước khi bước vào tuổi trưởng thành. Mất khôn ngoan cho các nhà giáo dục nếu bỏ qua những kỹ năng thực tế như vậy.",
+                breakdown: "<b>It is crucial for high school students to understand...</b> + <b>It would be unwise of educators to ignore...</b> (Đánh giá tầm quan trọng trong Part 3)."
+            }
+        ]
+    },
+    {
+        id: "topic-31",
+        title: "31. Structures with Make/Find/Keep/Leave (Cấu trúc Make/Find + O + Adj/V3)",
+        shortDesc: "Tạo câu phức nhận xét cảm nhận (Find something + Adj) hoặc tác động nguyên nhân (Make something + Adj/V3).",
+        formula: [
+            {
+                name: "Find + Object + Adj / to V",
+                structure: "S + find + it + Adj + to V / S + find + N + Adj",
+                usage: "Bày tỏ cảm nhận cá nhân về một hoạt động hoặc trải nghiệm."
+            },
+            {
+                name: "Make / Keep / Leave + Object + Adj / V3",
+                structure: "S + make / keep / leave + O + Adj / V3 (past participle)",
+                usage: "Diễn tả hành động khiến cho ai/cái gì ở trạng thái nào đó."
+            }
+        ],
+        proTips: "Thay vì nói 'I think learning English is difficult', hãy dùng 'I find it difficult to master English' để tăng band điểm ngay lập tức.",
+        samples: [
+            {
+                id: "t31-p1",
+                part: "part1",
+                partTitle: "Part 1: Reading & Books",
+                question: "Do you like reading books?",
+                answerEn: "Yes, definitely. **I find reading non-fiction books immensely helpful** because it keeps me informed about the world and **makes me more open-minded**.",
+                vietnamese: "Có chứ, chắc chắn rồi. Tôi thấy việc đọc sách phi hư cấu vô cùng hữu ích vì nó giúp tôi cập nhật thông tin về thế giới và làm cho tôi có tư duy cởi mở hơn.",
+                breakdown: "<b>I find reading... immensely helpful</b> (Find + O + Adj) + <b>makes me more open-minded</b> (Make + O + Adj)."
+            },
+            {
+                id: "t31-p2",
+                part: "part2",
+                partTitle: "Part 2: Describe a challenging task",
+                question: "Describe a difficult task you had to complete",
+                answerEn: "When I was tasked with organizing a company event, **I found it extremely stressful to manage** the budget. Unexpected costs **left me quite overwhelmed** during the first week.",
+                vietnamese: "Khi tôi được giao nhiệm vụ tổ chức một sự kiện công ty, tôi thấy cực kỳ căng thẳng khi quản lý ngân sách. Các chi phí phát sinh ngoài dự kiến đã khiến tôi hoàn toàn bị quá tải trong tuần đầu tiên.",
+                breakdown: "<b>I found it extremely stressful to manage...</b> (Find + it + Adj + to V) + <b>left me quite overwhelmed</b> (Leave + O + V3/Adj)."
+            },
+            {
+                id: "t31-p3",
+                part: "part3",
+                partTitle: "Part 3: Technology & Work Environment",
+                question: "How has technology affected our working environment?",
+                answerEn: "On the one hand, automation **has made routine tasks much easier** for employees. On the other hand, constant notifications **keep workers distracted** and reduce overall productivity.",
+                vietnamese: "Một mặt, sự tự động hóa đã làm cho các công việc lặp đi lặp lại trở nên dễ dàng hơn nhiều cho nhân viên. Mặt khác, các thông báo liên tục giữ cho người lao động bị xao nhãng và làm giảm năng suất chung.",
+                breakdown: "<b>has made routine tasks much easier</b> (Make + O + Adj) + <b>keep workers distracted</b> (Keep + O + V3/Adj)."
+            }
+        ]
+    },
+{
+        id: "topic-32",
+        title: "32. Fillers & Buying Time (Mẫu câu Mua thời gian & Mở đầu tự nhiên)",
+        shortDesc: "Các mẫu câu mở đầu giúp phản xạ tự nhiên, không bị ngập ngừng 'à, ừm' và có thêm 2-3 giây để sắp xếp ý tưởng.",
+        formula: [
+            {
+                name: "Delaying / Thinking Phrases",
+                structure: "That’s a tricky question... / Off the top of my head... / I haven't thought much about it, but...",
+                usage: "Sử dụng ngay khi gặp câu hỏi khó hoặc lạ ở Part 1 & Part 3."
+            }
+        ],
+        proTips: "Dùng 'Off the top of my head...' khi giám khảo hỏi về số liệu, tên gọi hoặc danh sách ở Part 1 để câu nói trôi chảy ngay lập tức.",
+        samples: [
+            {
+                id: "t32-p1",
+                part: "part1",
+                partTitle: "Part 1: Museums & History",
+                question: "How often do you visit museums?",
+                answerEn: "**Well, off the top of my head, I'd say** maybe once or twice a year. **I haven't given it much thought before, but** I usually only go when there is a special exhibition or when international friends visit my city.",
+                vietnamese: "Chà, phản xạ ngay lúc này thì tôi đoán khoảng một hoặc hai lần một năm. Tôi chưa từng nghĩ nhiều về điều này trước đây, nhưng tôi thường chỉ đi khi có triển lãm đặc biệt hoặc khi có bạn bè quốc tế đến thăm thành phố của tôi.",
+                breakdown: "<b>Well, off the top of my head, I'd say...</b> (Mẫu câu mua thời gian phản xạ tự nhiên) + <b>I haven't given it much thought before, but...</b> (Thừa nhận chân thật để câu nói mượt mà)."
+            },
+            {
+                id: "t32-p3",
+                part: "part3",
+                partTitle: "Part 3: Space Exploration",
+                question: "Should governments spend money on space exploration?",
+                answerEn: "**That’s a rather complex issue to address.** **From where I stand,** while basic terrestrial problems like poverty need funding, investing in space research also drives technological innovations that benefit healthcare and communication on Earth.",
+                vietnamese: "Đó là một vấn đề khá phức tạp để giải quyết. Theo góc nhìn của tôi, mặc dù các vấn đề cơ bản trên mặt đất như nghèo đói cần vốn đầu tư, việc đầu tư vào nghiên cứu vũ trụ cũng thúc đẩy những đổi mới công nghệ có lợi cho y tế và truyền thông trên Trái đất.",
+                breakdown: "<b>That’s a rather complex issue to address</b> (Khung mở bài trang trọng cho Part 3) + <b>From where I stand,...</b> (Cách đưa ra quan điểm cá nhân ấn tượng)."
+            }
+        ]
+    },
+    {
+        id: "topic-33",
+        title: "33. Giving Examples & Personal Anecdotes (Mẫu câu Đưa ví dụ & Trải nghiệm)",
+        shortDesc: "Cách dẫn dắt ví dụ mượt mà thay vì chỉ dùng 'For example', giúp kéo dài câu trả lời một cách logic.",
+        formula: [
+            {
+                name: "Exemplifying Structures",
+                structure: "A prime example of this would be... / To illustrate this point,... / Take ... as a case in point.",
+                usage: "Minh họa cho một luận điểm vừa nêu bằng thực tế hoặc trải nghiệm cá nhân."
+            }
+        ],
+        proTips: "Ở Part 3, thay vì 'For example', hãy dùng 'Take [Topic] as a case in point' để câu văn mang tính lập luận cao.",
+        samples: [
+            {
+                id: "t33-p1",
+                part: "part1",
+                partTitle: "Part 1: Weather & Seasons",
+                question: "What is your favorite type of weather?",
+                answerEn: "I definitely prefer cool, cloudy weather. **To give you an idea,** on rainy days I love sitting near the window with a warm cup of coffee, reading a book without feeling overwhelmed by heat.",
+                vietnamese: "Tôi chắc chắn thích thời tiết mát mẻ, nhiều mây hơn. Để bạn dễ hình dung, vào những ngày mưa tôi thích ngồi gần cửa sổ với một tách cà phê ấm, đọc một cuốn sách mà không cảm thấy ngột ngạt vì nắng nóng.",
+                breakdown: "<b>To give you an idea,...</b> (Cụm đưa ví dụ mang tính hình tượng và gần gũi)."
+            },
+            {
+                id: "t33-p3",
+                part: "part3",
+                partTitle: "Part 3: Public Transport",
+                question: "How can cities encourage people to use public transport?",
+                answerEn: "Upgrading transit infrastructure is essential. **Take my hometown as a case in point;** ever since the metro line was launched, thousands of commuters have switched from private bikes to daily train travel.",
+                vietnamese: "Nâng cấp hạ tầng giao thông là cốt lõi. Hãy lấy quê hương tôi làm ví dụ điển hình; kể từ khi tuyến tàu điện ngầm được đưa vào hoạt động, hàng ngàn người đi làm đã chuyển từ xe máy cá nhân sang đi tàu hàng ngày.",
+                breakdown: "<b>Take [X] as a case in point;...</b> (Cấu trúc đưa ví dụ thực tế chuẩn Band 7.0+)."
+            }
+        ]
+    },
+    {
+        id: "topic-34",
+        title: "34. Counter-balancing & Clarification (Mẫu câu Phân tách & Làm rõ ý)",
+        shortDesc: "Cách diễn tả 'Không hẳn như vậy...', 'Nói cách khác là...', hoặc 'Tùy thuộc vào từng trường hợp...'.",
+        formula: [
+            {
+                name: "Nuancing & Clarifying",
+                structure: "It really depends on... / What I mean by this is... / It’s not so much A as it is B.",
+                usage: "Tránh đưa ra câu trả lời quá tuyệt đối (phiến diện) và giải thích sâu hơn ý kiến."
+            }
+        ],
+        proTips: "Rất hữu ích khi câu hỏi Part 1 hoặc Part 3 quá rộng: Hãy dùng 'Well, it largely depends on the situation...' để chia thành 2 trường hợp cụ thể.",
+        samples: [
+            {
+                id: "t34-p1",
+                part: "part1",
+                partTitle: "Part 1: Shopping",
+                question: "Do you prefer shopping online or in traditional stores?",
+                answerEn: "**Well, it largely depends on what I'm buying.** If it's daily groceries, I prefer physical stores. However, for electronics, I usually go online because of better discounts.",
+                vietnamese: "Chà, điều đó phần lớn phụ thuộc vào việc tôi đang mua gì. Nếu là thực phẩm hàng ngày, tôi thích các cửa hàng truyền thống hơn. Tuy nhiên, đối với đồ điện tử, tôi thường mua trực tuyến vì có giảm giá tốt hơn.",
+                breakdown: "<b>Well, it largely depends on...</b> (Mẫu câu chia trường hợp linh hoạt để mở rộng câu trả lời)."
+            },
+            {
+                id: "t34-p3",
+                part: "part3",
+                partTitle: "Part 3: Success & Happiness",
+                question: "Does wealth bring happiness?",
+                answerEn: "**It's not so much about the money itself, as it is about** the financial security it provides. **What I mean by this is that** money eliminates basic survival stress, but personal fulfillment comes from relationships.",
+                vietnamese: "Nó không hẳn là về bản thân tiền bạc, mà là về sự an toàn tài chính mà nó mang lại. Ý tôi muốn nói ở đây là tiền bạc loại bỏ những căng thẳng sinh tồn cơ bản, nhưng sự viên mãn cá nhân lại đến từ các mối quan hệ.",
+                breakdown: "<b>It's not so much A, as it is B</b> (Mẫu câu phân tích ranh giới cực hay) + <b>What I mean by this is that...</b> (Cấu trúc làm rõ luận điểm)."
+            }
+        ]
+    },
+    {
+        id: "topic-35",
+        title: "35. Speculating & Future Trends (Mẫu câu Suy đoán & Dự báo tương lai)",
+        shortDesc: "Mẫu câu dùng cho Part 3 khi được hỏi về các xu hướng 10–20 năm tới hoặc dự đoán những điều chưa xảy ra.",
+        formula: [
+            {
+                name: "Speculation Language",
+                structure: "It is highly probable that... / I would hazard a guess that... / There’s a strong likelihood that...",
+                usage: "Đưa ra dự đoán mang tính logic mà không dùng mãi từ 'will'."
+            }
+        ],
+        proTips: "Dùng 'I would hazard a guess that...' giúp bạn có giọng văn suy đoán tự nhiên như người bản xứ.",
+        samples: [
+            {
+                id: "t35-p3",
+                part: "part3",
+                partTitle: "Part 3: Future of Education",
+                question: "Will traditional classrooms be completely replaced by online learning?",
+                answerEn: "**I would hazard a guess that** physical classrooms won't disappear entirely. **There is a strong likelihood that** schools will adopt a hybrid model, combining virtual lectures with hands-on group work.",
+                vietnamese: "Tôi mạn phép đoán rằng các lớp học truyền thống sẽ không biến mất hoàn toàn. Rất có khả năng các trường học sẽ áp dụng mô hình kết hợp, dung hòa giữa các bài giảng ảo và làm việc nhóm thực hành.",
+                breakdown: "<b>I would hazard a guess that...</b> + <b>There is a strong likelihood that...</b> (Hai bộ khung dự đoán xu hướng tương lai cao cấp)."
+            }
+        ]
+    },
+    {
+        id: "topic-36",
+        title: "36. Conceding & Refuting (Mẫu câu Thừa nhận & Phản biện)",
+        shortDesc: "Mẫu câu nhượng bộ 'Tôi thừa nhận A, nhưng B mới là cốt lõi' giúp lập luận sắc sảo.",
+        formula: [
+            {
+                name: "Concession Framework",
+                structure: "I concede that A, but... / Admitted, A. Nevertheless, B... / Granted, A, but having said that, B",
+                usage: "Ghi điểm Fluency & Coherence bằng cách thể hiện cái nhìn toàn diện 2 mặt của vấn đề."
+            }
+        ],
+        proTips: "Cực kỳ hiệu quả ở Part 3 khi thảo luận các chủ đề tranh cãi (như AI, Môi trường, Mạng xã hội).",
+        samples: [
+            {
+                id: "t36-p3",
+                part: "part3",
+                partTitle: "Part 3: Social Media & Youth",
+                question: "Is social media harmful to teenagers?",
+                answerEn: "**I concede that** social media can cause distraction and anxiety. **Nevertheless,** when used properly, it serves as a powerful platform for young people to connect, learn, and express their creativity.",
+                vietnamese: "Tôi thừa nhận rằng mạng xã hội có thể gây ra sự xao nhãng và lo âu. Tuy nhiên, khi được sử dụng đúng cách, nó đóng vai trò là một nền tảng mạnh mẽ để giới trẻ kết nối, học hỏi và thể hiện sự sáng tạo.",
+                breakdown: "<b>I concede that... Nevertheless,...</b> (Bộ khung thừa nhận vế phụ rồi lật lại vế chính cực kỳ thuyết phục)."
+            }
+        ]
+    },
+
+{
+        id: "topic-37",
+        title: "37. Paraphrasing & Question Rephrasing (Mẫu câu Diễn đạt lại câu hỏi)",
+        shortDesc: "Các kỹ thuật mở đầu giúp paraphrase lại từ khóa của giám khảo ngay lập tức, tránh lặp từ và ghi điểm Lexical Resource & Fluency.",
+        formula: [
+            {
+                name: "Rephrasing Starters",
+                structure: "When it comes to [Topic], I’d say... / Speaking of [Topic], ... / As for [Topic], ...",
+                usage: "Mở đầu câu trả lời bằng cách biến đổi danh từ/động từ của câu hỏi sang cấu trúc mới."
+            }
+        ],
+        proTips: "Thay vì lặp lại 'I like sports', hãy biến đổi từ khóa của câu hỏi: 'When it comes to physical activities, I'm quite keen on...'",
+        samples: [
+            {
+                id: "t37-p1",
+                part: "part1",
+                partTitle: "Part 1: Sports & Fitness",
+                question: "Do you like playing sports?",
+                answerEn: "**When it comes to staying active,** I'm quite passionate about outdoor games. Instead of traditional sports, **I'd say I'm more inclined towards** swimming and cycling.",
+                vietnamese: "Khi nói đến việc duy trì sự năng động, tôi khá hào hứng với các trò chơi ngoài trời. Thay vì các môn thể thao truyền thống, tôi muốn nói rằng mình nghiêng về bơi lội và đạp xe nhiều hơn.",
+                breakdown: "<b>When it comes to staying active,...</b> (Paraphrase từ 'playing sports') + <b>I'd say I'm more inclined towards...</b> (Thay thế cho 'I like')."
+            },
+            {
+                id: "t37-p3",
+                part: "part3",
+                partTitle: "Part 3: Environmental Protection",
+                question: "How can individuals protect the environment?",
+                answerEn: "**Regarding personal contributions to eco-preservation,** small daily habits make a huge difference. **To put it another way,** reducing single-use plastics is arguably the most effective starting point.",
+                vietnamese: "Liên quan đến đóng góp cá nhân cho việc bảo vệ môi trường, những thói quen nhỏ hàng ngày tạo ra sự khác biệt rất lớn. Nói cách khác, giảm nhựa dùng một lần có thể coi là điểm bắt đầu hiệu quả nhất.",
+                breakdown: "<b>Regarding personal contributions to eco-preservation,...</b> (Paraphrase 'individuals protect environment') + <b>To put it another way,...</b> (Mẫu câu giải thích lại ý chính)."
+            }
+        ]
+    },
+{
+        id: "topic-38",
+        title: "38. Universal Spoken Phrases (Các cụm từ vạn năng dùng cho mọi Topic)",
+        shortDesc: "Các cụm từ và cấu trúc kết nối vạn năng có thể đưa vào bất kỳ chủ đề nào (Part 1, 2, 3) để tăng độ trôi chảy, tự nhiên và mở rộng ý tưởng.",
+        formula: [
+            {
+                name: "1. Bộc lộ cảm xúc / Sở thích cá nhân",
+                structure: "I’m a huge fan of... / I’m not really into... / It’s not really my cup of tea",
+                usage: "Dùng để nói về sở thích, thói quen hoặc thái độ đối với bất kỳ đối tượng/chủ đề nào."
+            },
+            {
+                name: "2. Nhấn mạnh tầm quan trọng / Lợi ích",
+                structure: "play an indispensable role in... / bring a wealth of benefits to...",
+                usage: "Đánh giá vai trò hoặc lợi ích của một sự việc, kỹ năng, công nghệ hoặc thói quen."
+            },
+            {
+                name: "3. Nói về xu hướng & Tần suất",
+                structure: "every once in a while / have a tendency to V / keep track of...",
+                usage: "Mô tả thói quen cá nhân hoặc xu hướng chung của xã hội."
+            },
+            {
+                name: "4. Tóm tắt & Chốt luận điểm",
+                structure: "At the end of the day, ... / All in all, ... / To cut a long story short, ...",
+                usage: "Chốt lại câu trả lời ở Part 1/2 hoặc tóm tắt quan điểm ở Part 3."
+            }
+        ],
+        proTips: "Thay vì học cụm từ theo từng từ vựng chuyên ngành hẹp, hãy luyện phản xạ bằng các 'khung từ vạn năng' này. Chúng áp dụng được cho từ 80-90% các câu hỏi IELTS Speaking!",
+        samples: [
+            {
+                id: "t38-p1",
+                part: "part1",
+                partTitle: "Part 1: Any Topic (Music / Sports / Reading / Tech)",
+                question: "Do you enjoy listening to music in your spare time?",
+                answerEn: "To be completely honest, **I'm a huge fan of** acoustic music. Whenever I feel stressed, listening to soft melodies **plays an indispensable role in helping me unwind**. I only listen to rock **every once in a while**, as heavy music **isn't really my cup of tea**.",
+                vietnamese: "Thành thật mà nói, tôi là một người rất mê nhạc acoustic. Bất cứ khi nào căng thẳng, nghe những giai điệu nhẹ nhàng đóng vai trò không thể thiếu giúp tôi thư giãn. Tôi chỉ nghe nhạc rock thỉnh thoảng, vì nhạc mạnh không hẳn là gu của tôi.",
+                breakdown: "<b>I'm a huge fan of...</b> (Rất mê) + <b>plays an indispensable role in...</b> (Đóng vai trò không thể thiếu) + <b>every once in a while</b> (Thỉnh thoảng) + <b>isn't really my cup of tea</b> (Không phải gu của tôi) - Tất cả cụm này đều có thể thay bằng chủ đề khác (Sports, Reading, Travel...)."
+            },
+            {
+                id: "t38-p2",
+                part: "part2",
+                partTitle: "Part 2: Any Topic (Describe a Trip / Skill / Event / Person)",
+                question: "Describe a skill you learned recently that was difficult",
+                answerEn: "Learning video editing was a steep learning curve. At first, I was overwhelmed, but **to cut a long story short**, I managed to master the basics after a month. Looking back, this skill **brings a wealth of benefits to my daily work**.",
+                vietnamese: "Học dựng video là một quá trình học hỏi nhiều thử thách. Ban đầu tôi bị ngợp, nhưng tóm lại câu chuyện là tôi đã làm chủ được những cơ bản sau một tháng. Nhìn lại, kỹ năng này mang lại vô số lợi ích cho công việc hàng ngày của tôi.",
+                breakdown: "<b>to cut a long story short</b> (Tóm lại là - dùng chốt ý câu chuyện Part 2) + <b>brings a wealth of benefits to...</b> (Mang lại vô số lợi ích cho...)."
+            },
+            {
+                id: "t38-p3",
+                part: "part3",
+                partTitle: "Part 3: Any Topic (Education / Environment / Government / Technology)",
+                question: "Is AI technology beneficial for modern education?",
+                answerEn: "Undoubtedly. AI **plays an indispensable role in** modernizing classrooms. People **have a tendency to worry** about students cheating, but **at the end of the day**, technology **brings a wealth of benefits** if used properly.",
+                vietnamese: "Chắc chắn rồi. AI đóng vai trò không thể thiếu trong việc hiện đại hóa lớp học. Mọi người có xu hướng lo lắng về việc học sinh gian lận, nhưng suy cho cùng, công nghệ mang lại vô số lợi ích nếu được sử dụng đúng cách.",
+                breakdown: "<b>have a tendency to...</b> (Có xu hướng) + <b>at the end of the day</b> (Suy cho cùng) + <b>brings a wealth of benefits</b> (Mang lại vô số lợi ích)."
+            }
+        ]
+    },
+
+    {
+        id: "topic-39",
+        title: "39. Generalization & Categorization (Khái quát hóa & Phân loại)",
+        shortDesc: "Mẫu câu phân loại các đối tượng (theo độ tuổi, thu nhập, giới tính) để trả lời sâu sắc cho các câu hỏi tổng quan Part 3.",
+        formula: [
+            {
+                name: "Categorization Phrases",
+                structure: "Broadly speaking, ... / By and large, ... / Generally speaking, people can be categorized into...",
+                usage: "Nhìn nhận vấn đề ở góc độ tổng thể xã hội trước khi đi vào từng nhóm cụ thể."
+            }
+        ],
+        proTips: "Rất hữu ích khi gặp câu hỏi Part 3 mang tính bao quát như 'Do people in your country like X?': Dùng 'Broadly speaking, it varies across demographics...'",
+        samples: [
+            {
+                id: "t39-p3",
+                part: "part3",
+                partTitle: "Part 3: Reading Habits",
+                question: "Do people in your country read a lot of books?",
+                answerEn: "**Broadly speaking, reading habits vary significantly across different demographics.** While the older generation still favors printed paperbacks, youngsters **tend to lean towards** digital e-books and audiobooks.",
+                vietnamese: "Nhìn chung, thói quen đọc sách khác nhau đáng kể giữa các nhóm nhân khẩu học khác nhau. Trong khi thế hệ lớn tuổi vẫn ưa chuộng sách in giấy, giới trẻ có xu hướng nghiêng về sách điện tử và sách nói.",
+                breakdown: "<b>Broadly speaking, ... vary across demographics</b> (Mẫu câu khái quát hóa chuyên nghiệp) + <b>tend to lean towards...</b> (Xu hướng của nhóm đối tượng)."
+            }
+        ]
+    },
+    {
+        id: "topic-40",
+        title: "40. Self-Correction & Reframing (Tự sửa lỗi & Đổi góc nhìn)",
+        shortDesc: "Mẫu câu giúp chữa lỗi lỡ lời hoặc đính chính ý tưởng mượt mà mà không làm mất điểm Fluency.",
+        formula: [
+            {
+                name: "Correction & Clarification Phrases",
+                structure: "Or rather,... / What I should have said is... / Let me rephrase that,...",
+                usage: "Sửa lại từ sai ngữ pháp hoặc diễn đạt lại ý kiến cho chính xác hơn."
+            }
+        ],
+        proTips: "Nếu nói nhầm thì hoặc dùng sai từ, đừng dừng lại lúng túng. Hãy nói ngay 'Or rather, I should say...' rồi sửa mượt mà.",
+        samples: [
+            {
+                id: "t40-p2",
+                part: "part2",
+                partTitle: "Part 2: Describe an old item",
+                question: "Describe something old that your family keeps",
+                answerEn: "My family owns a vintage wooden clock. It was bought by my grandfather in 1970—**or rather, it was passed down to him** by his father. It has been sitting in our living room for decades.",
+                vietnamese: "Gia đình tôi sở hữu một chiếc đồng hồ gỗ cổ. Nó được ông tôi mua vào năm 1970—đúng hơn là, nó đã được cha ông truyền lại cho ông. Nó đã nằm ở phòng khách của chúng tôi nhiều thập kỷ.",
+                breakdown: "<b>...or rather, it was passed down...</b> (Sử dụng 'or rather' để tự đính chính chi tiết mà vẫn giữ được độ trôi chảy)."
+            },
+            {
+                id: "t40-p3",
+                part: "part3",
+                partTitle: "Part 3: Career Planning",
+                question: "Is salary the most important factor when choosing a job?",
+                answerEn: "High income is vital. **Or to put it more precisely,** financial security is what attracts most applicants initially, although job satisfaction becomes more important over time.",
+                vietnamese: "Thu nhập cao là yếu tố thiết yếu. Hoặc nói một cách chính xác hơn, sự an toàn tài chính mới là điều thu hút hầu hết ứng viên ban đầu, mặc dù sự hài lòng công việc trở nên quan trọng hơn theo thời gian.",
+                breakdown: "<b>Or to put it more precisely,...</b> (Mẫu câu nâng cấp ý nghĩa từ khái quát sang chính xác)."
+            }
+        ]
+    },
+
+
+        ];
+
+        // State Management
+        let currentTopicId = "topic-1";
+        let currentPartFilter = "all";
+        let showVietnamese = true;
+
+        // Initialize App
+        window.onload = function() {
+            renderTopicNavigation();
+            renderTopicContent();
+        };
+
+        // Render Topic Navigation List
+        function renderTopicNavigation() {
+            const nav = document.getElementById('topicNavigation');
+            nav.innerHTML = grammarTopicsData.map(topic => {
+                const isActive = topic.id === currentTopicId;
+                const activeClass = isActive 
+                    ? 'bg-indigo-50 text-indigo-700 border-indigo-600 font-semibold' 
+                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-transparent';
+
+                return `
+                    <button onclick="selectTopic('${topic.id}')" 
+                        class="w-full text-left px-3 py-2.5 rounded-lg border-l-4 text-xs sm:text-sm transition flex items-center justify-between group ${activeClass}">
+                        <span class="truncate pr-2">${topic.title}</span>
+                        <i class="fa-solid fa-chevron-right text-[10px] opacity-40 group-hover:opacity-100 transition"></i>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Select Topic
+        function selectTopic(topicId) {
+            currentTopicId = topicId;
+            renderTopicNavigation();
+            renderTopicContent();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render Main Topic Content
+        function renderTopicContent() {
+            const topic = grammarTopicsData.find(t => t.id === currentTopicId);
+            if (!topic) return;
+
+            // Header & Formula Section
+            const headerCard = document.getElementById('topicHeaderCard');
+            headerCard.innerHTML = `
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-5">
+                    <div>
+                        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md mb-2">Chuyên đề trọng tâm</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900">${topic.title}</h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">${topic.shortDesc}</p>
+                    </div>
+                </div>
+
+                <!-- Quick Formula Box -->
+                <div class="space-y-3 mb-5">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-code text-indigo-500"></i> Tóm tắt Cấu trúc & Hướng dẫn Ứng dụng
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        ${topic.formula.map(f => `
+                            <div class="bg-slate-50 border border-slate-200/80 rounded-lg p-3 space-y-1.5">
+                                <div class="text-xs font-bold text-slate-800">${f.name}</div>
+                                <div class="font-mono text-xs bg-white px-2 py-1 rounded border border-slate-200 text-indigo-700 font-medium overflow-x-auto">${f.structure}</div>
+                                <div class="text-[11px] text-slate-500 leading-tight">${f.usage}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Pro Speaking Tip -->
+                <div class="bg-amber-50/80 border border-amber-200/80 rounded-lg p-3 text-xs flex items-start gap-2.5">
+                    <i class="fa-solid fa-star text-amber-500 text-sm mt-0.5 shrink-0"></i>
+                    <div>
+                        <span class="font-bold text-amber-900">Pro Speaking Tip: </span>
+                        <span class="text-amber-800">${topic.proTips}</span>
+                    </div>
+                </div>
+            `;
+
+            // Filter Samples
+            const filteredSamples = topic.samples.filter(s => {
+                if (currentPartFilter === 'all') return true;
+                return s.part === currentPartFilter;
+            });
+
+            // Render Samples Section
+            const container = document.getElementById('samplesContainer');
+            if (filteredSamples.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white rounded-xl border border-slate-200/80 p-8 text-center text-slate-400 text-sm">
+                        Chuyên đề này không có bài mẫu ở Part bạn đang lọc. Hãy chọn "Tất cả" hoặc Part khác!
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filteredSamples.map(sample => {
+                const formattedAnswerEn = sample.answerEn.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-indigo-700 decoration-indigo-300 underline underline-offset-2">$1</strong>');
+                const formattedBreakdown = sample.breakdown.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+                return `
+                    <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition hover:shadow-md">
+                        <!-- Part Tag Header -->
+                        <div class="bg-slate-50 px-5 py-3 border-b border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wide flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full ${sample.part === 'part1' ? 'bg-emerald-500' : sample.part === 'part2' ? 'bg-amber-500' : 'bg-indigo-500'}"></span>
+                                ${sample.partTitle}
+                            </span>
+                            <button onclick="copyToClipboard('${sample.id}')" class="text-xs text-slate-500 hover:text-indigo-600 flex items-center gap-1 transition px-2 py-1 rounded hover:bg-slate-100">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>Copy bài mẫu</span>
+                            </button>
+                        </div>
+
+                        <div class="p-5 sm:p-6 space-y-4">
+                            <!-- Question -->
+                            <div>
+                                <h4 class="text-xs uppercase font-bold text-slate-400 tracking-wider mb-1">Câu hỏi (Question)</h4>
+                                <p class="text-sm sm:text-base font-semibold text-slate-900">"${sample.question}"</p>
+                            </div>
+
+                            <!-- Sample Answer (English & Vietnamese) -->
+                            <div class="bg-slate-50/60 rounded-lg p-4 border border-slate-100 space-y-3">
+                                <div>
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-1.5 flex items-center justify-between">
+                                        <span>Câu trả lời mẫu (Sample Answer)</span>
+                                    </h4>
+                                    <p id="ans-${sample.id}" class="text-sm text-slate-700 leading-relaxed font-sans">${formattedAnswerEn}</p>
+                                </div>
+
+                                <div class="translation-block ${showVietnamese ? '' : 'hidden'} border-t border-slate-200/60 pt-2.5">
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Bản dịch Tiếng Việt</h4>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">${sample.answerVi}</p>
+                                </div>
+                            </div>
+
+                            <!-- Grammar Breakdown -->
+                            <div class="bg-indigo-50/40 rounded-lg p-3.5 border border-indigo-100/60 text-xs text-slate-700 space-y-1">
+                                <div class="font-bold text-indigo-900 flex items-center gap-1.5 mb-1">
+                                    <i class="fa-solid fa-magnifying-glass-chart text-indigo-600"></i>
+                                    <span>Phân tích Ngữ pháp Ứng dụng (Grammar Breakdown):</span>
+                                </div>
+                                <div class="leading-relaxed text-slate-600 space-y-1">
+                                    ${formattedBreakdown}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter by Part
+        function filterPart(part) {
+            currentPartFilter = part;
+            document.querySelectorAll('.part-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'shadow-xs', 'text-indigo-900', 'font-semibold');
+                btn.classList.add('hover:text-slate-900');
+            });
+
+            const activeBtn = document.getElementById(`filter-${part}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white', 'shadow-xs', 'text-indigo-900', 'font-semibold');
+            }
+
+            renderTopicContent();
+        }
+
+        // Global Toggle Translation
+        function toggleGlobalTranslation() {
+            showVietnamese = !showVietnamese;
+            const blocks = document.querySelectorAll('.translation-block');
+            blocks.forEach(block => {
+                if (showVietnamese) {
+                    block.classList.remove('hidden');
+                } else {
+                    block.classList.add('hidden');
+                }
+            });
+            showToast(showVietnamese ? "Đã hiện dịch Tiếng Việt" : "Đã ẩn dịch Tiếng Việt");
+        }
+
+        // Copy Answer Text
+        function copyToClipboard(sampleId) {
+            let sampleObj;
+            for (let t of grammarTopicsData) {
+                const found = t.samples.find(s => s.id === sampleId);
+                if (found) {
+                    sampleObj = found;
+                    break;
+                }
+            }
+
+            if (!sampleObj) return;
+
+            const cleanText = `Question: ${sampleObj.question}\n\nSample Answer:\n${sampleObj.answerEn.replace(/\*\*/g, '')}\n\nTranslation:\n${sampleObj.answerVi}`;
+            
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = cleanText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            showToast("Đã sao chép câu trả lời mẫu!");
+        }
+
+        // Toast Notification Helper
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        // Search Filter Logic
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!query) {
+                renderTopicContent();
+                return;
+            }
+
+            const currentTopic = grammarTopicsData.find(t => t.id === currentTopicId);
+            const container = document.getElementById('samplesContainer');
+
+            const matchedSamples = currentTopic.samples.filter(s => 
+                s.question.toLowerCase().includes(query) ||
+                s.answerEn.toLowerCase().includes(query) ||
+                s.breakdown.toLowerCase().includes(query)
+            );
+
+            if (matchedSamples.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white rounded-xl border border-slate-200/80 p-8 text-center text-slate-400 text-sm">
+                        Không tìm thấy bài mẫu phù hợp với từ khóa "${query}" trong chuyên đề này.
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = matchedSamples.map(sample => {
+                const formattedAnswerEn = sample.answerEn.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-indigo-700 decoration-indigo-300 underline underline-offset-2">$1</strong>');
+                const formattedBreakdown = sample.breakdown.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+                return `
+                    <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden">
+                        <div class="bg-slate-50 px-5 py-3 border-b border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wide flex items-center gap-2">
+                                ${sample.partTitle}
+                            </span>
+                            <button onclick="copyToClipboard('${sample.id}')" class="text-xs text-slate-500 hover:text-indigo-600 flex items-center gap-1 transition">
+                                <i class="fa-regular fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="p-5 sm:p-6 space-y-4">
+                            <div>
+                                <h4 class="text-xs uppercase font-bold text-slate-400 tracking-wider mb-1">Câu hỏi</h4>
+                                <p class="text-sm sm:text-base font-semibold text-slate-900">"${sample.question}"</p>
+                            </div>
+                            <div class="bg-slate-50/60 rounded-lg p-4 border border-slate-100 space-y-3">
+                                <div>
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-1.5">Câu trả lời mẫu</h4>
+                                    <p class="text-sm text-slate-700 leading-relaxed font-sans">${formattedAnswerEn}</p>
+                                </div>
+                                <div class="translation-block ${showVietnamese ? '' : 'hidden'} border-t border-slate-200/60 pt-2.5">
+                                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Bản dịch</h4>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed italic">${sample.answerVi}</p>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-50/40 rounded-lg p-3.5 border border-indigo-100/60 text-xs text-slate-700">
+                                <div class="font-bold text-indigo-900 mb-1">Phân tích Ngữ pháp Ứng dụng:</div>
+                                <div class="text-slate-600 space-y-1">${formattedBreakdown}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+    </script>
+</body>
+</html>
